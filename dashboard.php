@@ -4,17 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Document</title>
 </head>
-<?php include("./Assets/links.php") ?>
+<?php include('./Assets/links.php') ?>
 
 <body>
-    <div class="side"> <?php include("./Assets/sidemenu.php") ?></div>
-    <div class="content">
+    <div>
+        <?php include("./Assets/nav.php") ?>
+    </div>
+    <div class="body-content">
+        <div class="sidemenubar">
+            <?php include("./Assets/sidemenu.php") ?>
+        </div>
+        <div class="main-content">
+            <!-- content of the page -->
 
+            <h1>dashboard</h1>
+
+            <!-- end of page -->
+        </div>
     </div>
 </body>
-
 <style>
 
 </style>

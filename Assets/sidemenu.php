@@ -1,115 +1,144 @@
- <div class="sidemenubar">
-     <div class="sm_head">
-         <p>Kalvi Saalai</p>
-     </div>
-     <div class="sm_list">
-         <ul>
-             <li><a href="#">Dashboard</a></li>
-             <li><a href="#">Students</a></li>
-             <li><a href="#">Attenance</a></li>
-             <li><a href="#">Notice</a></li>
-             <li><a href="#">Report</a></li>
-         </ul>
-     </div>
-     <div class="sm_foot">
-         <div class="sm_footer">
-             <div class="name">
-                 <p class="hi">Hi,</p>
-                 <p class="sm_foot_name">Surya</p>
-             </div>
-             <div class="icon">
-                 <i class="bi bi-box-arrow-left"></i>
-             </div>
-         </div>
-     </div>
- </div>
- <style>
-     .sidemenubar {
-         background-color: var(--blue);
-         height: 100vh;
-         width: 220px;
-         position: relative;
-         display: flex;
-         flex-direction: column;
-         justify-content: space-between;
-     }
+<div class="sidebar">
+    <ul class="menu-content">
+        <li class="menu-items">
+            <a href="">Dashboard</a>
+        </li>
+        <li class="menu-items link">
+            <a>Students</a>
+            <ul class="sub-menu">
+                <li><a href="">Add Students</a></li>
+                <li><a href="">Manage Students</a></li>
+            </ul>
+        </li>
+        <li class="menu-items link">
+            <a>Attenance</a>
+            <ul class="sub-menu">
+                <li><a href="">Add Attenance</a></li>
+                <li><a href="">Manage Attenance</a></li>
+            </ul>
+        </li>
+        <li class="menu-items link">
+            <a>Results</a>
+            <ul class="sub-menu">
+                <li><a href="">Add Results</a></li>
+                <li><a href="">Manage Results</a></li>
+            </ul>
+        </li>
+        <li class="menu-items link">
+            <a>Notice</a>
+            <ul class="sub-menu">
+                <li><a href="">Add Notice</a></li>
+                <li><a href="">Manage Notice</a></li>
+            </ul>
+        </li>
+    </ul>
+    <div class="btm">
+        <p>Logout</p>
+        <p><i class='bx bx-log-out'></i></p>
+    </div>
+</div>
+<style>
+    .sidebar {
+        margin-top: 10px;
+        width: 260px;
+        background-color: var(--white);
+        padding: 20px;
+        height: 100vh;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        overflow: hidden;
+        color: var(--txt);
+    }
 
-     .sm_head {
-         padding: 12px 0;
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         flex-direction: column;
-     }
+    .menu-content {
+        overflow: scroll;
+        padding: 60px 0;
+        transition: 1s ease-in-out;
+    }
 
-     .sm_head p {
-         font-size: 24px;
-         color: var(--grey);
-     }
+    .menu-content::-webkit-scrollbar {
+        display: none;
+    }
 
-     .sm_list {
-         margin: 10px 0 0 0;
-     }
+    .menu-content .menu-items {
+        list-style: none;
+        padding: 10px;
+        cursor: pointer;
+    }
 
-     .sm_list ul li {
-         height: 40px;
-         padding: 0 20px 0;
-         display: flex;
-         align-items: center;
-         cursor: pointer;
-         margin: 10px 0;
-     }
+    .sub-menu {
+        list-style: none;
+        padding-left: 20px;
+        display: none;
+        transition: 1s ease-in-out;
+        margin-top: 8px;
+    }
 
-     .sm_list ul li a:hover {
-         background-color: var(--white);
-         color: var(--blue);
-         box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px,
-             rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px,
-             rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px,
-             rgba(0, 0, 0, 0.07) 0px 32px 64px;
-     }
+    .menu-items:hover {
+        width: 100%;
+        background-color: var(--blue);
+        border-radius: 10px;
+        text-decoration-color: white;
+    }
 
-     .sm_list ul li a {
-         text-decoration: none;
-         color: var(--white);
-         width: 100%;
-         padding: 10px 18px;
-         border-radius: 15px;
-     }
+    .menu-items:hover a {
+        color: var(--white);
+    }
 
-     .sm_foot {
-         margin: 10px 0;
-         padding: 5px 20px;
-     }
+    .menu-items a {
+        text-decoration: none;
+        color: var(--txt);
+    }
 
-     .sm_footer {
-         box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px,
-             rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px,
-             rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px,
-             rgba(0, 0, 0, 0.07) 0px 32px 64px;
-         background-color: var(--white);
-         border-radius: 15px;
-         display: flex;
-         justify-content: space-between;
-     }
+    .sub-menu li {
+        padding: 10px;
+    }
 
-     .sm_footer {
-         height: 50px;
-         padding: 8px;
-     }
+    .sub-menu li:hover {
+        background-color: var(--white);
+        border-radius: 10px;
+    }
 
-     .sm_footer .hi {
-         font-size: 12px;
-     }
+    .sub-menu li:hover a {
+        color: var(--txt);
+    }
 
-     .sm_foot_name {
-         font-size: 18px;
-         color: var(--blue);
-         font-weight: 600;
-     }
+    .btm {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: var(--white);
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        justify-content: space-around;
+        border-top: 1px solid #dbdbdb;
+    }
 
-     .sm_footer .icon {
-         padding: 8px;
-         font-size: 24px;
-     }
- </style>
+    .btm p {
+        font-size: 18px;
+    }
+
+    .btm p i {
+        font-size: 26px;
+    }
+
+    .active {
+        display: block;
+    }
+</style>
+<script>
+    document.querySelectorAll(".link").forEach(function(link) {
+        link.addEventListener("click", function(e) {
+            if (e.target.children[1].classList.contains("active")) {
+                e.target.children[1].classList.remove("active");
+                console.log("active");
+            } else {
+                e.target.children[1].classList.add("active");
+                console.log("not");
+            }
+        });
+    });
+</script>
