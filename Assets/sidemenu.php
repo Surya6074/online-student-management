@@ -1,34 +1,34 @@
 <div class="sidebar">
     <ul class="menu-content">
         <li class="menu-items">
-            <a href="">Dashboard</a>
+            <a href="dashboard.php">Dashboard</a>
         </li>
         <li class="menu-items link">
-            <a>Students</a>
-            <ul class="sub-menu">
+            <a class="links">Students</a>
+            <ul class=" sub-menu">
                 <li><a href="">Add Students</a></li>
                 <li><a href="">Manage Students</a></li>
             </ul>
         </li>
         <li class="menu-items link">
-            <a>Attenance</a>
-            <ul class="sub-menu">
+            <a class="links">Attenance</a>
+            <ul class=" sub-menu">
                 <li><a href="">Add Attenance</a></li>
                 <li><a href="">Manage Attenance</a></li>
             </ul>
         </li>
         <li class="menu-items link">
-            <a>Results</a>
+            <a class="links">Results</a>
             <ul class="sub-menu">
                 <li><a href="">Add Results</a></li>
                 <li><a href="">Manage Results</a></li>
             </ul>
         </li>
         <li class="menu-items link">
-            <a>Notice</a>
+            <a class="links">Notice</a>
             <ul class="sub-menu">
-                <li><a href="">Add Notice</a></li>
-                <li><a href="">Manage Notice</a></li>
+                <li><a href="add-notice.php">Add Notice</a></li>
+                <li><a href="manage-notice.php">Manage Notice</a></li>
             </ul>
         </li>
     </ul>
@@ -50,6 +50,7 @@
         flex-direction: column;
         overflow: hidden;
         color: var(--txt);
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
 
     .menu-content {
@@ -137,6 +138,17 @@
                 console.log("active");
             } else {
                 e.target.children[1].classList.add("active");
+                console.log("not");
+            }
+        });
+    });
+    document.querySelectorAll(".links").forEach(function(links) {
+        links.addEventListener("click", function(e) {
+            if (e.target.parentNode.children[1].classList.contains("active")) {
+                e.target.parentNode.children[1].classList.remove("active");
+                console.log("active");
+            } else {
+                e.target.parentNode.children[1].classList.add("active");
                 console.log("not");
             }
         });

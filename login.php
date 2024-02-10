@@ -28,13 +28,13 @@
             <div class="form">
                 <form name="studlogin" id="studlogin" action="" method="post">
                     <p class="form-header">Student Login</p>
-                    <input type="text" placeholder="Register no" name="studreg" class="inputfield" />
-                    <input type="password" placeholder="Password" name="studpass" class="inputfield" />
+                    <input type="text" placeholder="Register no" id="sname" name="studreg" class="inputfield" />
+                    <input type="password" placeholder="Password" id="spass" name="studpass" class="inputfield" />
                     <div class="check-box">
                         <input type="checkbox" />
                         <p>Remember me</p>
                     </div>
-                    <button class="studlogin">login</button>
+                    <button type="submit" class="studlogin">login</button>
                 </form>
                 <form name="stafflogin" id="stafflogin" action="" method="post">
                     <p class="form-header">Staff Login</p>

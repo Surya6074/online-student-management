@@ -5,9 +5,9 @@
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <style>
     :root {
-        --blue: rgb(64, 112, 244);
+        --blue: #2984FF;
         --lightblue: #4ea5ff;
-        --white: #f5f7fa;
+        --white: #fff;
         --grey: #e5e5e5;
         --txt: #707070;
     }
@@ -21,7 +21,7 @@
 
     body {
         overflow: hidden;
-        background-color: var(--grey);
+        background-color: #F8F8F9;
     }
 
     .body-content {
@@ -34,6 +34,7 @@
         height: 90vh;
         width: 100%;
         padding: 35px 35px;
+
     }
 
     .main-content::-webkit-scrollbar {
