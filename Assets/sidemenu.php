@@ -13,8 +13,8 @@
         <li class="menu-items link">
             <a class="links">Attenance</a>
             <ul class=" sub-menu">
-                <li><a href="add-attenance.php">Add Attenance</a></li>
-                <li><a href="">Manage Attenance</a></li>
+                <li><a href="attenance.php">Add Attenance</a></li>
+                <li><a href="add-attenance.php">Manage Attenance</a></li>
             </ul>
         </li>
         <li class="menu-items link">
