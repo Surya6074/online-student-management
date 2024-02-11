@@ -61,9 +61,6 @@ if (array_key_exists('studlog', $_POST)) {
         echo "<script> location.replace('./student/index.php'); </script>";
         header("location: ./student/index.php");
     }
-    else{
-
-    }
 }
 
 if (array_key_exists('stafflog', $_POST)) {

@@ -1,24 +1,16 @@
 <div class="sidebar">
     <ul class="menu-content">
-        <li class="menu-items">
+        <li class="menu-items" onclick="location.replace('index.php')">
             <a href="index.php">Dashboard</a>
         </li>
-        <li class="menu-items">
+        <li class="menu-items" onclick="location.replace('profile.php')">
             <a class="links">Profile</a>
         </li>
-        <li class="menu-items link">
-            <a class="links">Attenance</a>
-            <ul class=" sub-menu">
-                <li><a href="attenance.php">Add Attenance</a></li>
-                <li><a href="add-attenance.php">Manage Attenance</a></li>
-            </ul>
+        <li class="menu-items link" onclick="location.replace('attenance.php')">
+            <a href="attenance.php" class="links">Attenance</a>
         </li>
-        <li class="menu-items link">
-            <a class="links">Results</a>
-            <ul class="sub-menu">
-                <li><a href="result.php">Add Results</a></li>
-                <li><a href="add-result.php">Manage Results</a></li>
-            </ul>
+        <li class="menu-items link" onclick="location.replace('result.php')">
+            <a href="result.php" class="links">Results</a>
         </li>
     </ul>
     <div class="btm">
