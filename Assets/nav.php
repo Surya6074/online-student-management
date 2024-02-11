@@ -1,6 +1,6 @@
 <nav>
     <div class="head">
-        <p>Programmer</p>
+        <p>Admin panel</p>
         <button onclick="test()"><i class='bx bxs-user-circle'></i></button>
     </div>
     <div class="user-nav" id="user-profile" onmouseleave="clearuserprofile()">

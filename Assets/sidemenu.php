@@ -20,8 +20,8 @@
         <li class="menu-items link">
             <a class="links">Results</a>
             <ul class="sub-menu">
-                <li><a href="">Add Results</a></li>
-                <li><a href="">Manage Results</a></li>
+                <li><a href="result.php">Add Results</a></li>
+                <li><a href="add-result.php">Manage Results</a></li>
             </ul>
         </li>
         <li class="menu-items link">
@@ -29,6 +29,13 @@
             <ul class="sub-menu">
                 <li><a href="add-notice.php">Add Notice</a></li>
                 <li><a href="manage-notice.php">Manage Notice</a></li>
+            </ul>
+        </li>
+        <li class="menu-items link">
+            <a class="links">Subjects</a>
+            <ul class="sub-menu">
+                <li><a href="add-subject.php">Add Subject</a></li>
+                <li><a href="manage-subject.php">Manage Subject</a></li>
             </ul>
         </li>
     </ul>
