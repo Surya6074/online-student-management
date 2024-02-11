@@ -7,7 +7,7 @@
             <a class="links">Students</a>
             <ul class=" sub-menu">
                 <li><a href="add-student.php">Add Students</a></li>
-                <li><a href="">Manage Students</a></li>
+                <li><a href="manage-student.php">Manage Students</a></li>
             </ul>
         </li>
         <li class="menu-items link">
