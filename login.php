@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="form">
-                <form name="studlogin" id="studlogin" action="" method="post">
+                <form name="studlogin" id="studlogin" action="login.php" method="post">
                     <p class="form-header">Student Login</p>
                     <input type="text" placeholder="Register no" id="sname" name="studreg" class="inputfield" />
                     <input type="password" placeholder="Password" id="spass" name="studpass" class="inputfield" />
@@ -34,9 +34,9 @@
                         <input type="checkbox" />
                         <p>Remember me</p>
                     </div>
-                    <button type="submit" class="studlogin">login</button>
+                    <button type="submit" name="studlog" class="studlogin">login</button>
                 </form>
-                <form name="stafflogin" id="stafflogin" action="" method="post">
+                <form name="stafflogin" id="stafflogin" action="login.php" method="post">
                     <p class="form-header">Staff Login</p>
                     <input type="text" placeholder="Username" name="staffname" class="inputfield" />
                     <input type="password" placeholder="Password" name="staffpass" class="inputfield" />
@@ -44,12 +44,35 @@
                         <input type="checkbox" />
                         <p>Remember me</p>
                     </div>
-                    <button class="stafflogin">login</button>
+                    <button type="submit" class="stafflogin" name="stafflog">login</button>
                 </form>
             </div>
         </div>
     </div>
 </body>
+<?php
+if (array_key_exists('studlog', $_POST)) {
+
+    $studuser = $_POST['studreg'];
+    $studpass = $_POST['studpass'];
+
+
+    if ($studuser == "user" && $studpass == "test") {
+        header("location: ./student/index.php");
+    }
+}
+
+if (array_key_exists('stafflog', $_POST)) {
+    $staffuser = $_POST['staffname'];
+    $staffpass = $_POST['staffpass'];
+
+    if ($staffuser == "user" && $staffpass == "test") {
+        header("location:dashboard.php");
+    }
+}
+
+
+?>
 <style>
     body {
         background-color: #fff;
