@@ -21,10 +21,10 @@
             <div class="con">
                 <h1>Add notice</h1>
                 <div class="notice">
-                    <form action="" method="post">
-                        <input placeholder="Notice Title" type="text" class="notice-input" />
+                    <form action="add-notice.php" method="post">
+                        <input placeholder="Notice Title" name="noticetitle" type="text" class="notice-input" />
                         <textarea placeholder="Notice" class="notice-input" name="noticemsg" cols="40" rows="6"></textarea>
-                        <button type="submit">submit</button>
+                        <button name="notice" type="submit">submit</button>
                     </form>
                 </div>
             </div>
@@ -32,6 +32,16 @@
         </div>
     </div>
 </body>
+<?php
+date_default_timezone_set('Asia/Kolkata');
+if (array_key_exists('notice', $_POST)) {
+    $ntitle = $_POST['noticetitle'];
+    $nmsg = $_POST['noticemsg'];
+    echo "<script>alert('" . $ntitle . " " . $nmsg . " " . date("H:i:sa") . "')</script>";
+    print_r($_POST);
+}
+
+?>
 <style>
     .main-content {
         display: flex;
