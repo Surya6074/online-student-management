@@ -63,8 +63,8 @@
                                 </div>
 
                                 <div class="inp">
-                                    <label>Distric</label>
-                                    <input type="email" placeholder="Distric" />
+                                    <label>District</label>
+                                    <input type="email" placeholder="District" />
                                 </div>
                                 <div class="inp">
                                     <label>Pincode</label>
