@@ -39,7 +39,13 @@
                                     <label>DOB</label>
                                     <input type="date" placeholder="DOB" />
                                 </div>
-
+                                <div class="inp">
+                                    <label>Gender</label>
+                                    <select name="Gender" id="">
+                                        <option value="Male">Male</option>
+                                        <option value="Male">Female</option>
+                                    </select>
+                                </div>
                                 <div class="inp">
                                     <label>Email</label>
                                     <input type="email" placeholder="Email" />
