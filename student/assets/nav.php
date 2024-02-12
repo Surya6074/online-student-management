@@ -1,23 +1,42 @@
-<nav>
-    <div class="head">
-        <p>Student Dashboard</p>
-        <button onclick="test()"><i class='bx bxs-user-circle'></i></button>
-    </div>
-    <div class="user-nav" id="user-profile" onmouseleave="clearuserprofile()">
-        <div class="user-profile">
-            <i class="bx bxs-user-circle"></i>
+<?php
+include_once('./config/connect.php');
+
+$sqlselect = "SELECT * FROM `stud_details` WHERE 1";
+$query = mysqli_query($conn, $sqlselect);
+$numrow = mysqli_num_rows($query);
+if ($numrow > 0) {
+    $row = mysqli_fetch_assoc($query);
+    echo "<script>alert('success')</script>";
+?>
+
+    <nav>
+        <div class="head">
+            <p>Student Dashboard</p>
+            <button onclick="test()"><i class='bx bxs-user-circle'></i></button>
         </div>
-        <div class="user-name">
-            <p>Surya kumar</p>
-            <p>surya@gmail.com</p>
-            <p>212703131</p>
+        <div class="user-nav" id="user-profile" onmouseleave="clearuserprofile()">
+            <div class="user-profile">
+                <i class="bx bxs-user-circle"></i>
+            </div>
+            <div class="user-name">
+
+                <?php
+
+                echo "<p>" . $row['stud_name'] . "</p>";
+                echo "<p>" . $row['stud_email'] . "</p>";
+                echo "<p>" . $row['stud_phone'] . "</p>";
+
+                ?>
+            </div>
+            <div class="user-logout">
+                <p>Logout</p>
+                <i class="bx bx-log-out"></i>
+            </div>
         </div>
-        <div class="user-logout">
-            <p>Logout</p>
-            <i class="bx bx-log-out"></i>
-        </div>
-    </div>
-</nav>
+    </nav>
+
+<?php }
+?>
 <style>
     nav {
         position: relative;
