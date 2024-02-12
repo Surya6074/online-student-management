@@ -58,7 +58,11 @@ if (array_key_exists('studlog', $_POST)) {
 
 
     if ($studuser == "user" && $studpass == "test") {
+        echo "<script> location.replace('./student/index.php'); </script>";
         header("location: ./student/index.php");
+    }
+    else{
+
     }
 }
 
@@ -67,7 +71,8 @@ if (array_key_exists('stafflog', $_POST)) {
     $staffpass = $_POST['staffpass'];
 
     if ($staffuser == "user" && $staffpass == "test") {
-        header("location:dashboard.php");
+        echo "<script> location.replace('dashboard.php'); </script>";
+        header("location: ./dashboard.php");
     }
 }
 
