@@ -51,6 +51,7 @@
     </div>
 </body>
 <?php
+include("./config/connect.php");
 if (array_key_exists('studlog', $_POST)) {
 
     $studuser = $_POST['studreg'];
