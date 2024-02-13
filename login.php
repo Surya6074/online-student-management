@@ -50,32 +50,7 @@
         </div>
     </div>
 </body>
-<?php
-include("./config/connect.php");
-if (array_key_exists('studlog', $_POST)) {
 
-    $studuser = $_POST['studreg'];
-    $studpass = $_POST['studpass'];
-
-
-    if ($studuser == "user" && $studpass == "test") {
-        echo "<script> location.replace('./student/index.php'); </script>";
-        header("location: ./student/index.php");
-    }
-}
-
-if (array_key_exists('stafflog', $_POST)) {
-    $staffuser = $_POST['staffname'];
-    $staffpass = $_POST['staffpass'];
-
-    if ($staffuser == "user" && $staffpass == "test") {
-        echo "<script> location.replace('dashboard.php'); </script>";
-        header("location: ./dashboard.php");
-    }
-}
-
-
-?>
 <style>
     body {
         background-color: #fff;
@@ -207,3 +182,40 @@ if (array_key_exists('stafflog', $_POST)) {
 </script>
 
 </html>
+
+<?php
+
+include_once('./config/connect.php');
+
+
+if (array_key_exists('studlog', $_POST)) {
+
+    $studuser = $_POST['studreg'];
+    $studpass = $_POST['studpass'];
+    echo "<script>alert('" . $studuser . $studpass . "')</script>";
+
+    // sql select query
+    $sqlselect = "select * from student_details Where stud_id ='$studuser' and stud_dob = '$studpass'";
+    $result = $conn->query($sqlselect);
+    $row = mysqli_num_rows($result);
+    $stud = mysqli_fetch_assoc($result);
+    if ($row > 0 && $row < 2) {
+        echo "<script>alert('" . $stud['stud_email'] . "')</script>";
+    }
+
+    //session
+
+}
+
+if (array_key_exists('stafflog', $_POST)) {
+    $staffuser = $_POST['staffname'];
+    $staffpass = $_POST['staffpass'];
+
+    if ($staffuser == "user" && $staffpass == "test") {
+        echo "<script> location.replace('dashboard.php'); </script>";
+        header("location: ./dashboard.php");
+    }
+}
+
+
+?>
