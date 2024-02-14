@@ -209,19 +209,31 @@ if (array_key_exists('studlog', $_POST)) {
         $_SESSION['u_dept'] = $stud['stud_dept'];
 
         echo "<script>location.replace('./student/index.php');</script>";
+    } else {
+        echo "<script>alert('invalid username or password')</script>";
     }
-
-    //session
-
 }
 
 if (array_key_exists('stafflog', $_POST)) {
     $staffuser = $_POST['staffname'];
     $staffpass = $_POST['staffpass'];
 
-    if ($staffuser == "user" && $staffpass == "test") {
+
+    // sql select query
+    $sqlselect = "select * from admin_details Where admin_name ='$staffuser' and admin_password = '$staffpass'";
+
+    $result = $conn->query($sqlselect);
+    $row = mysqli_num_rows($result);
+    $stud = mysqli_fetch_assoc($result);
+    if ($row > 0 && $row < 2) {
+        $_SESSION['u_id'] = $stud['admin_id'];
+        $_SESSION['u_name'] = $stud['admin_name'];
+        $_SESSION['u_email'] = $stud['admin_email'];
+        $_SESSION['u_phone'] = $stud['admin_phno'];
+
         echo "<script> location.replace('dashboard.php'); </script>";
-        header("location: ./dashboard.php");
+    } else {
+        echo "<script>alert('invalid username or password')</script>";
     }
 }
 

@@ -35,12 +35,12 @@ include("./Assets/links.php"); ?>
                             <div class="tab-form">
                                 <div class="inp">
                                     <label>Name</label>
-                                    <input type="text" placeholder="Name" />
+                                    <input type="text" name="studname" placeholder="Name" />
                                 </div>
 
                                 <div class="inp">
                                     <label>DOB</label>
-                                    <input type="date" placeholder="DOB" />
+                                    <input type="date" name="dob" placeholder="DOB" />
                                 </div>
                                 <div class="inp">
                                     <label>Gender</label>
@@ -51,11 +51,11 @@ include("./Assets/links.php"); ?>
                                 </div>
                                 <div class="inp">
                                     <label>Email</label>
-                                    <input type="email" placeholder="Email" />
+                                    <input type="email" name="studemail" placeholder="Email" />
                                 </div>
                                 <div class="inp">
                                     <label>Phone number</label>
-                                    <input type="text" placeholder="Phone number" />
+                                    <input type="text" name="studphno" placeholder="Phone number" />
                                 </div>
                             </div>
                         </div>
@@ -63,21 +63,21 @@ include("./Assets/links.php"); ?>
                             <div class="tab-form">
                                 <div class="inp">
                                     <label>Street</label>
-                                    <input type="text" placeholder="Street" />
+                                    <input type="text" name="studstreet" placeholder="Street" />
                                 </div>
 
                                 <div class="inp">
                                     <label>City</label>
-                                    <input type="text" placeholder="City" />
+                                    <input type="text" name="studcity" placeholder="City" />
                                 </div>
 
                                 <div class="inp">
                                     <label>District</label>
-                                    <input type="email" placeholder="District" />
+                                    <input type="email" name="studdistrict" placeholder="District" />
                                 </div>
                                 <div class="inp">
                                     <label>Pincode</label>
-                                    <input type="text" placeholder="Pincode" />
+                                    <input type="text" name="studpincode" placeholder="Pincode" />
                                 </div>
                             </div>
                         </div>
@@ -85,21 +85,21 @@ include("./Assets/links.php"); ?>
                             <div class="tab-form">
                                 <div class="inp">
                                     <label>Father's Name</label>
-                                    <input type="text" placeholder="Father's Name" />
+                                    <input type="text" name="studfathername" placeholder="Father's Name" />
                                 </div>
                                 <div class="inp">
                                     <label>Father's phone no</label>
-                                    <input type="email" placeholder="Father's phone no" />
+                                    <input type="email" name="studfatherno" placeholder="Father's phone no" />
                                 </div>
 
                                 <div class="inp">
                                     <label>Mother's Name</label>
-                                    <input type="text" placeholder="Mother's Name" />
+                                    <input type="text" name="studmothername" placeholder="Mother's Name" />
                                 </div>
 
                                 <div class="inp">
                                     <label>Mother's phone no</label>
-                                    <input type="text" placeholder="Mother's phone no" />
+                                    <input type="text" name="studmotherno" placeholder="Mother's phone no" />
                                 </div>
                             </div>
                         </div>
@@ -131,6 +131,10 @@ include("./Assets/links.php"); ?>
                                         <option value="b">B</option>
                                         <option value="c">C</option>
                                     </select>
+                                </div>
+                                <div class="inp">
+                                    <label>Register no</label>
+                                    <input type="text" placeholder="Reg no" />
                                 </div>
 
                             </div>
