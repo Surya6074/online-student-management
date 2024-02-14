@@ -1,3 +1,7 @@
+<?php
+include("./config/session.php");
+include("./Assets/links.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<?php include('./Assets/links.php') ?>
 
 <body>
     <nav>

@@ -8,9 +8,11 @@
             <i class="bx bxs-user-circle"></i>
         </div>
         <div class="user-name">
-            <p>Surya kumar</p>
-            <p>surya@gmail.com</p>
-            <p>212703131</p>
+            <?php
+            echo "<p>" . $_SESSION['u_name'] . "</p>";
+            echo "<p>" . $_SESSION['u_email'] . "</p>";
+            echo "<p>" . $_SESSION['u_id'] . "</p>";
+            ?>
         </div>
         <div class="user-logout">
             <p>Logout</p>

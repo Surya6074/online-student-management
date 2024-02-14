@@ -1,4 +1,6 @@
-<?php include("./Assets/links.php"); ?>
+<?php
+include("./config/session.php");
+include("./Assets/links.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -184,7 +186,6 @@
 </html>
 
 <?php
-
 include_once('./config/connect.php');
 
 
@@ -192,7 +193,6 @@ if (array_key_exists('studlog', $_POST)) {
 
     $studuser = $_POST['studreg'];
     $studpass = $_POST['studpass'];
-    echo "<script>alert('" . $studuser . $studpass . "')</script>";
 
     // sql select query
     $sqlselect = "select * from student_details Where stud_id ='$studuser' and stud_dob = '$studpass'";
@@ -200,7 +200,15 @@ if (array_key_exists('studlog', $_POST)) {
     $row = mysqli_num_rows($result);
     $stud = mysqli_fetch_assoc($result);
     if ($row > 0 && $row < 2) {
-        echo "<script>alert('" . $stud['stud_email'] . "')</script>";
+        $_SESSION['u_id'] = $stud['stud_id'];
+        $_SESSION['u_name'] = $stud['stud_name'];
+        $_SESSION['u_dob'] = $stud['stud_dob'];
+        $_SESSION['u_email'] = $stud['stud_email'];
+        $_SESSION['u_phone'] = $stud['stud_phno'];
+        $_SESSION['u_year'] = $stud['stud_year'];
+        $_SESSION['u_dept'] = $stud['stud_dept'];
+
+        echo "<script>location.replace('./student/index.php');</script>";
     }
 
     //session

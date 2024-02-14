@@ -1,3 +1,7 @@
+<?php
+include("./config/session.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -165,3 +169,8 @@
 </style>
 
 </html>
+
+<?php
+include('./config/connect.php');
+
+?>
