@@ -10,6 +10,12 @@ include("./Assets/links.php"); ?>
     <title>Document</title>
 </head>
 
+<?php
+
+$attenyear = $_POST['attendanceyear'];
+$attendate = $_POST['attendancedate'];
+?>
+
 <body>
     <nav>
         <?php include("./Assets/nav.php") ?>
@@ -22,19 +28,27 @@ include("./Assets/links.php"); ?>
             <!-- content of the page -->
             <div class="attenance-head">
                 <div class="year ath">
-                    <p>Year :</p>
-                    <p>III</p>
+                    <?php
+                    echo "<p>Year :</p>";
+                    if ($attenyear == 3) {
+                        echo "<p>III</p>";
+                    } elseif ($attenyear == 2) {
+                        echo "<p>II</p>";
+                    } else {
+                        echo "<p>I</p>";
+                    }
+                    ?>
                 </div>
-                <div class="section ath">
+                <!-- <div class="section ath">
                     <p>Section :</p>
                     <p>A</p>
-                </div>
+                </div> -->
                 <div class="date ath">
                     <p>Date :</p>
-                    <input type="date" />
+                    <input type="date" value="<?php echo "$attendate"; ?>" />
                 </div>
             </div>
-            <form action="add-attenance.php" method="post">
+            <form action="add-attenance.php" method="post" onSubmit="return confirm('confirm to upload')">
                 <div class="attenance">
                     <table>
                         <thead>
@@ -42,91 +56,42 @@ include("./Assets/links.php"); ?>
                             <th>Present/Absent</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <p>suryakumar <span>(212703131)</span></p>
-                                </td>
-                                <td>
-                                    <label class="checkbox">
-                                        <input name="check5" type="checkbox" class="checkbox__input" />
-                                        <span class="checkbox__inner"></span>
-                                    </label>
-                                </td>
-                            </tr>
 
-                            <tr>
-                                <td>
-                                    <p>Ragava <span>(212703125)</span></p>
-                                </td>
-                                <td>
-                                    <label class="checkbox">
-                                        <input name="check5" type="checkbox" class="checkbox__input" />
-                                        <span class="checkbox__inner"></span>
-                                    </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Yuvaaa <span>(212703134)</span></p>
-                                </td>
-                                <td>
-                                    <label class="checkbox">
-                                        <input name="check5" type="checkbox" class="checkbox__input" />
-                                        <span class="checkbox__inner"></span>
-                                    </label>
-                                </td>
-                            </tr>
+                            <?php
+                            include("./config/connect.php");
 
-                            <tr>
-                                <td>
-                                    <p>Santhosh <span>(212703128)</span></p>
-                                </td>
-                                <td>
-                                    <label class="checkbox">
-                                        <input name="check5" type="checkbox" class="checkbox__input" />
-                                        <span class="checkbox__inner"></span>
-                                    </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Manthi <span>(212703116)</span></p>
-                                </td>
-                                <td>
-                                    <label class="checkbox">
-                                        <input name="check5" type="checkbox" class="checkbox__input" />
-                                        <span class="checkbox__inner"></span>
-                                    </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Sriram <span>(212703130)</span></p>
-                                </td>
-                                <td>
-                                    <label class="checkbox">
-                                        <input name="check5" type="checkbox" class="checkbox__input" />
-                                        <span class="checkbox__inner"></span>
-                                    </label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>Water <span>(212703133)</span></p>
-                                </td>
-                                <td>
-                                    <label class="checkbox">
-                                        <input name="check5" type="checkbox" class="checkbox__input" />
-                                        <span class="checkbox__inner"></span>
-                                    </label>
-                                </td>
-                            </tr>
+                            if (array_key_exists('attendancesubmit', $_POST)) {
+                                foreach ($_POST['atten'] as $item) {
+                                    echo $item;
+                                }
+                            }
 
+
+
+
+                            $sql = "SELECT `stud_id`, `stud_name` FROM `student_details` where stud_year = '$attenyear'";
+                            $result = $conn->query($sql);
+                            $numsrow = mysqli_num_rows($result);
+                            if ($numsrow > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo "<tr>";
+
+                                    echo "<td><p>" . $row['stud_name'] . "<span>(" . $row['stud_id'] . ")</span></p></td>";
+                                    echo "<td>
+                                    <label class='checkbox'>
+                                        <input name='atten[]' value='" . $row['stud_id'] . "' type='checkbox' class='checkbox__input' />
+                                        <span class='checkbox__inner'></span>
+                                    </label>
+                                </td>";
+                                    echo "</tr>";
+                                }
+                            }
+                            ?>
                         </tbody>
                     </table>
                     <div class="submit-btn">
                         <button type="reset" class="btn btn-re">Reset</button>
-                        <button type="submit" class="btn btn-sub">Submit</button>
+                        <button type="submit" name="attendancesubmit" class="btn btn-sub">Submit</button>
                     </div>
                 </div>
             </form>

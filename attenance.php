@@ -24,19 +24,19 @@ include("./Assets/links.php"); ?>
 
             <div class="attenance-select">
                 <h1>Attenance</h1>
-                <form action="" method="post">
+                <form action="./add-attenance.php" method="post">
                     <table>
                         <tr>
                             <td>Year</td>
                             <td>
-                                <select name="year" id="atyear">
-                                    <option value="I-year">I-year</option>
-                                    <option value="II-year">II-year</option>
-                                    <option value="III-year">III-year</option>
+                                <select name="attendanceyear" id="atyear">
+                                    <option value="1">I-year</option>
+                                    <option value="2">II-year</option>
+                                    <option value="3">III-year</option>
                                 </select>
                             </td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td>Section</td>
                             <td>
                                 <select name="section" id="atsection">
@@ -45,10 +45,10 @@ include("./Assets/links.php"); ?>
                                     <option value="C">C</option>
                                 </select>
                             </td>
-                        </tr>
+                        </tr> -->
                         <tr>
                             <td>Date</td>
-                            <td><input type="date" name="atten-date" /></td>
+                            <td><input type="date" name="attendancedate" /></td>
                         </tr>
                     </table>
                     <div class="submit-btn">
