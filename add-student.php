@@ -23,7 +23,7 @@ include("./Assets/links.php"); ?>
             <!-- content of the page -->
 
             <div class="stud-form">
-                <form action="">
+                <form action="add-student.php" method="post">
                     <div class="stud-tab-head">
                         <p class="tab-active">Student</p>
                         <p class="">Address</p>
@@ -35,27 +35,27 @@ include("./Assets/links.php"); ?>
                             <div class="tab-form">
                                 <div class="inp">
                                     <label>Name</label>
-                                    <input type="text" name="studname" placeholder="Name" />
+                                    <input type="text" name="studname" placeholder="Name" required />
                                 </div>
 
                                 <div class="inp">
                                     <label>DOB</label>
-                                    <input type="date" name="dob" placeholder="DOB" />
+                                    <input type="date" name="studdob" placeholder="DOB" required />
                                 </div>
                                 <div class="inp">
                                     <label>Gender</label>
-                                    <select name="Gender" id="">
+                                    <select name="studgender" id="">
                                         <option value="Male">Male</option>
-                                        <option value="Male">Female</option>
+                                        <option value="female">Female</option>
                                     </select>
                                 </div>
                                 <div class="inp">
                                     <label>Email</label>
-                                    <input type="email" name="studemail" placeholder="Email" />
+                                    <input type="email" name="studemail" placeholder="Email" required />
                                 </div>
                                 <div class="inp">
                                     <label>Phone number</label>
-                                    <input type="text" name="studphno" placeholder="Phone number" />
+                                    <input type="text" name="studphno" placeholder="Phone number" required />
                                 </div>
                             </div>
                         </div>
@@ -63,21 +63,20 @@ include("./Assets/links.php"); ?>
                             <div class="tab-form">
                                 <div class="inp">
                                     <label>Street</label>
-                                    <input type="text" name="studstreet" placeholder="Street" />
+                                    <input type="text" name="studstreet" placeholder="Street" required />
                                 </div>
-
                                 <div class="inp">
                                     <label>City</label>
-                                    <input type="text" name="studcity" placeholder="City" />
+                                    <input type="text" name="studcity" placeholder="City" required />
                                 </div>
 
                                 <div class="inp">
                                     <label>District</label>
-                                    <input type="email" name="studdistrict" placeholder="District" />
+                                    <input type="text" name="studdistrict" placeholder="District" required />
                                 </div>
                                 <div class="inp">
                                     <label>Pincode</label>
-                                    <input type="text" name="studpincode" placeholder="Pincode" />
+                                    <input type="text" name="studpincode" placeholder="Pincode" required />
                                 </div>
                             </div>
                         </div>
@@ -85,21 +84,21 @@ include("./Assets/links.php"); ?>
                             <div class="tab-form">
                                 <div class="inp">
                                     <label>Father's Name</label>
-                                    <input type="text" name="studfathername" placeholder="Father's Name" />
+                                    <input type="text" name="studfname" placeholder="Father's Name" required />
                                 </div>
                                 <div class="inp">
                                     <label>Father's phone no</label>
-                                    <input type="email" name="studfatherno" placeholder="Father's phone no" />
+                                    <input type="text" name="studfno" placeholder="Father's phone no" required />
                                 </div>
 
                                 <div class="inp">
                                     <label>Mother's Name</label>
-                                    <input type="text" name="studmothername" placeholder="Mother's Name" />
+                                    <input type="text" name="studmname" placeholder="Mother's Name" required />
                                 </div>
 
                                 <div class="inp">
                                     <label>Mother's phone no</label>
-                                    <input type="text" name="studmotherno" placeholder="Mother's phone no" />
+                                    <input type="text" name="studmno" placeholder="Mother's phone no" required />
                                 </div>
                             </div>
                         </div>
@@ -107,26 +106,23 @@ include("./Assets/links.php"); ?>
                             <div class="tab-form">
                                 <div class="inp">
                                     <label>Department</label>
-                                    <select name="section">
-                                        <option value="a">BCA</option>
-                                        <option value="b">Bsc</option>
-                                        <option value="c">MCA</option>
-                                        <option value="c">BsC IT</option>
-                                        <option value="c">MCA</option>
+                                    <select name="studdept" id="">
+                                        <option value="BCA">BCA</option>
+                                        <option value="MCA">MCA</option>
                                     </select>
                                 </div>
                                 <div class="inp">
                                     <label>Year</label>
-                                    <select name="section">
-                                        <option value="a">III year</option>
-                                        <option value="b">II year</option>
-                                        <option value="c">I year</option>
+                                    <select name="studyear" id="">
+                                        <option value="3">III YEAR</option>
+                                        <option value="2">II YEAR</option>
+                                        <option value="1">I YEAR</option>
                                     </select>
                                 </div>
 
                                 <div class="inp">
                                     <label>Section</label>
-                                    <select name="section">
+                                    <select name="studsection">
                                         <option value="a">A</option>
                                         <option value="b">B</option>
                                         <option value="c">C</option>
@@ -134,15 +130,16 @@ include("./Assets/links.php"); ?>
                                 </div>
                                 <div class="inp">
                                     <label>Register no</label>
-                                    <input type="text" placeholder="Reg no" />
+                                    <input type="text" name="studregno" placeholder="Reg no" required />
                                 </div>
 
                             </div>
-                            <div class="submit-btn">
-                                <button type="reset" class="btn btn-re">Reset</button>
-                                <button type="submit" class="btn btn-sub">Submit</button>
-                            </div>
+
                         </div>
+                    </div>
+                    <div class="submit-btn">
+                        <button type="reset" class="btn btn-re">Reset</button>
+                        <button type="submit" name="addstudentbtn" class="btn btn-sub">Submit</button>
                     </div>
                 </form>
             </div>
@@ -290,3 +287,34 @@ include("./Assets/links.php"); ?>
 </style>
 
 </html>
+
+<?php
+if (array_key_exists('addstudentbtn', $_POST)) {
+    include_once('./config/connect.php');
+    $sname = $_POST['studname'];
+    $semail = $_POST['studemail'];
+    $sdob = $_POST['studdob'];
+    $sphno = $_POST['studphno'];
+    $sgender = $_POST['studgender'];
+    $sstreet = $_POST['studstreet'];
+    $scity = $_POST['studcity'];
+    $sdis = $_POST['studdistrict'];
+    $spin = $_POST['studpincode'];
+    $sfname = $_POST['studfname'];
+    $sfno = $_POST['studfno'];
+    $smname = $_POST['studmname'];
+    $smno = $_POST['studmno'];
+    $sdept = $_POST['studdept'];
+    $syear = $_POST['studyear'];
+    $sregno = $_POST['studregno'];
+    $ssec = $_POST['studsection'];
+
+    $sql = "INSERT INTO `student_details`(`stud_id`, `stud_name`, `stud_dob`, `stud_phno`, `stud_email`, `stud_street`, `stud_city`, `stud_district`, `stud_pincode`, `stud_fathername`, `stud_fatherno`, `stud_mothername`, `stud_motherno`, `stud_year`, `stud_dept`, `stud_gender`) VALUES ('$sregno','$sname','$sdob','$sphno','$semail','$sstreet','$scity','$sdis','$spin','$sfname','$sfno','$smname','$smno','$syear','$sdept','$sgender')";
+    if ($conn->query($sql)) {
+        echo "<script>alert('inserted  successfully')</script>";
+    }
+}
+
+
+
+?>
