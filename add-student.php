@@ -130,7 +130,7 @@ include("./Assets/links.php"); ?>
                                 </div>
                                 <div class="inp">
                                     <label>Register no</label>
-                                    <input type="text" name="studregno" placeholder="Reg no" required />
+                                    <input type="text" name="studregno" placeholder="Reg no" />
                                 </div>
 
                             </div>
