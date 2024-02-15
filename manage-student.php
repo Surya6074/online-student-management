@@ -51,10 +51,14 @@ include("./Assets/links.php"); ?>
                             include('./config/connect.php');
 
                             if (array_key_exists('delrecord', $_POST)) {
+                                $conn->query('SET foreign_key_checks = 0');
                                 $delrecord = "DELETE FROM `student_details` WHERE stud_id = '" . $_POST['delrecord'] . "'";
-                                if ($conn->query($delrecord)) {
+                                $delrecord1 = "DELETE FROM `attendance_details` WHERE stud_id = '" . $_POST['delrecord'] . "'";
+                                if ($conn->query($delrecord) && $conn->query($delrecord1)) {
                                     echo "<script>alert('" . $_POST['delrecord'] . " deleted successfully')</script>";
                                 }
+
+                                $conn->query('SET foreign_key_checks = 1');
                             }
 
 

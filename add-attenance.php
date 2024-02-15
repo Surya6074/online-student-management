@@ -58,7 +58,7 @@ $attendate = $_POST['attendancedate'];
 
                             <?php
                             include("./config/connect.php");
-                            $date = $_SESSION['date'];
+                            $date = $attendate;
 
                             $sql = "SELECT `stud_id`, `stud_name` FROM `student_details` where stud_year = '$attenyear'";
                             $result = $conn->query($sql);
