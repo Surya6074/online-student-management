@@ -11,7 +11,6 @@ include("./Assets/links.php"); ?>
 </head>
 
 <?php
-
 $attenyear = $_POST['attendanceyear'];
 $attendate = $_POST['attendancedate'];
 ?>
@@ -59,39 +58,52 @@ $attendate = $_POST['attendancedate'];
 
                             <?php
                             include("./config/connect.php");
-
-                            if (array_key_exists('attendancesubmit', $_POST)) {
-                                foreach ($_POST['atten'] as $item) {
-                                    echo $item;
-                                }
-                            }
-
-
-
+                            $date = $_SESSION['date'];
 
                             $sql = "SELECT `stud_id`, `stud_name` FROM `student_details` where stud_year = '$attenyear'";
                             $result = $conn->query($sql);
-                            $numsrow = mysqli_num_rows($result);
-                            if ($numsrow > 0) {
+                            $nums = mysqli_num_rows($result);
+                            if ($nums > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     echo "<tr>";
-
                                     echo "<td><p>" . $row['stud_name'] . "<span>(" . $row['stud_id'] . ")</span></p></td>";
-                                    echo "<td>
-                                    <label class='checkbox'>
-                                        <input name='atten[]' value='" . $row['stud_id'] . "' type='checkbox' class='checkbox__input' />
-                                        <span class='checkbox__inner'></span>
-                                    </label>
-                                </td>";
+                                    echo "<td><div class='wrapper'><div class='card'><input class='input' type='radio' name='check[" . $row['stud_id'] . "]' value='1' /><span class='check'></span><label class='label'><div class='title'>P</div></label></div><div class='card'><input class='input' type='radio' name='check[" . $row['stud_id'] . "]' value='0' /><span class='check'></span><label class='label'><div class='title'>A</div></label></div></div></td>";
                                     echo "</tr>";
                                 }
                             }
+
+                            //upload attendance
+                            $date = date($attendate);
+                            if (isset($_POST['submit'])) {
+                                $at = $_POST['check'];
+
+                                //check for attendance
+
+                                $checkatten = "SELECT *  FROM `attendance_details` WHERE atten_date='$date'";
+                                $attenresult = $conn->query($checkatten);
+                                $checknum = mysqli_num_rows($attenresult);
+                                if ($checknum > 0) {
+                                    echo "<script>alert('already take attenance')</script>";
+                                    echo "<script>location.replace('attenance.php')</script>";
+                                } else {
+
+                                    foreach ($at as $key => $item) {
+                                        $insertsql = "INSERT INTO `attendance_details`(`attendance_id`,`stud_id`, `atten_date`, `atten_status`) VALUES ('','$key','$date','$item')";
+                                        $conn->query($insertsql);
+                                    }
+                                    echo "<script>alert('success uploaded')</script>";
+                                    echo "<script>location.replace('attenance.php')</script>";
+                                }
+                            }
+
+
+
                             ?>
                         </tbody>
                     </table>
                     <div class="submit-btn">
                         <button type="reset" class="btn btn-re">Reset</button>
-                        <button type="submit" name="attendancesubmit" class="btn btn-sub">Submit</button>
+                        <button type="submit" name="submit" value="submit" class="btn btn-sub">Submit</button>
                     </div>
                 </div>
             </form>
@@ -179,29 +191,92 @@ $attendate = $_POST['attendancedate'];
         color: var(--txt);
     }
 
-    .checkbox {
+    .attenance tbody td {
+        padding: 10px 150px;
+    }
+
+    .wrapper {
         position: relative;
-        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        margin: 0 10px;
     }
 
-    .checkbox__input {
-        visibility: hidden;
+    .card {
+        position: relative;
+        width: 80px;
+        height: 50px;
+        background: #fff;
+        border-radius: 10px;
+        transition: all 0.3s;
     }
 
-    .checkbox__inner {
-        display: inline-block;
-        width: 24px;
-        height: 24px;
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .input {
+        position: relative;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        appearance: none;
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        z-index: 10;
+    }
+
+    .input:checked+.check::after {
+        content: "";
+        position: absolute;
+        top: 19px;
+        right: 19px;
+        width: 12px;
+        height: 12px;
+        background-color: rgba(255, 0, 0, 0.7);
         border-radius: 50%;
-        border: 1px solid #626262;
-        background: transparent no-repeat center;
     }
 
-    .checkbox__input:checked+.checkbox__inner {
-        border-color: #52c6c4;
-        background-color: #52c6c4;
-        background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='14px' height='10px' viewBox='0 0 14 10' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 59.1 (86144) - https://sketch.com --%3E%3Ctitle%3Echeck%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='ios_modification' transform='translate(-27.000000, -191.000000)' fill='%23FFFFFF' fill-rule='nonzero'%3E%3Cg id='Group-Copy' transform='translate(0.000000, 164.000000)'%3E%3Cg id='ic-check-18px' transform='translate(25.000000, 23.000000)'%3E%3Cpolygon id='check' points='6.61 11.89 3.5 8.78 2.44 9.84 6.61 14 15.56 5.05 14.5 4'%3E%3C/polygon%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        background-size: 14px 10px;
+    .input[value="1"]:checked+.check::after {
+        background-color: rgba(0, 128, 0, 0.7);
+    }
+
+    .input[value="0"]:checked {
+        border: 1.5px solid rgba(255, 0, 0, 0.7);
+    }
+
+    .input[value="1"]:checked {
+        border: 1.5px solid rgba(0, 128, 0, 0.7);
+    }
+
+    .label {
+        color: #323232;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+    }
+
+    .label .title {
+        margin: 15px 0 0 15px;
+        font-weight: 900;
+        font-size: 15px;
+        letter-spacing: 1.5px;
+    }
+
+    .label .price {
+        margin: 20px 0 0 15px;
+        font-size: 20px;
+        font-weight: 900;
+    }
+
+    .label .span {
+        color: gray;
+        font-weight: 700;
+        font-size: 15px;
     }
 </style>
 
