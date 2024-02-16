@@ -1,6 +1,6 @@
 <div class="sidebar">
     <ul class="menu-content">
-        <li class="menu-items">
+        <li class="menu-items" onclick="location.replace('dashboard.php')">
             <a href="dashboard.php">Dashboard</a>
         </li>
         <li class="menu-items link">
@@ -10,12 +10,8 @@
                 <li><a href="manage-student.php">Manage Students</a></li>
             </ul>
         </li>
-        <li class="menu-items link">
-            <a class="links">Attenance</a>
-            <ul class=" sub-menu">
-                <li><a href="attenance.php">Add Attenance</a></li>
-                <li><a href="add-attenance.php">Manage Attenance</a></li>
-            </ul>
+        <li class="menu-items link" onclick="location.replace('attenance.php')">
+            <a class="links" href="attenance.php">Attenance</a>
         </li>
         <li class="menu-items link">
             <a class="links">Results</a>

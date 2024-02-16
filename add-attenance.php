@@ -11,8 +11,8 @@ include("./Assets/links.php"); ?>
 </head>
 
 <?php
-$attenyear = $_POST['attendanceyear'];
-$attendate = $_POST['attendancedate'];
+$attenyear = $_GET['attendanceyear'];
+$attendate = $_GET['attendancedate'];
 ?>
 
 <body>

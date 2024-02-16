@@ -24,7 +24,7 @@ include("./Assets/links.php"); ?>
 
             <div class="attenance-select">
                 <h1>Attenance</h1>
-                <form action="./add-attenance.php" method="post">
+                <form action="./add-attenance.php" method="get">
                     <table>
                         <tr>
                             <td>Year</td>
