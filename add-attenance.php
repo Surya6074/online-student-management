@@ -58,7 +58,8 @@ $attendate = $_GET['attendancedate'];
 
                             <?php
                             include("./config/connect.php");
-                            $date = $attendate;
+                            $date = date("Y-m-d");
+                            print_r($_GET);
 
                             $sql = "SELECT `stud_id`, `stud_name` FROM `student_details` where stud_year = '$attenyear'";
                             $result = $conn->query($sql);
@@ -73,7 +74,6 @@ $attendate = $_GET['attendancedate'];
                             }
 
                             //upload attendance
-                            $date = date($attendate);
                             if (isset($_POST['submit'])) {
                                 $at = $_POST['check'];
 
@@ -91,7 +91,7 @@ $attendate = $_GET['attendancedate'];
                                         $insertsql = "INSERT INTO `attendance_details`(`attendance_id`,`stud_id`, `atten_date`, `atten_status`) VALUES ('','$key','$date','$item')";
                                         $conn->query($insertsql);
                                     }
-                                    echo "<script>alert('success uploaded')</script>";
+                                    echo "<script>alert('Attenance success uploaded')</script>";
                                     echo "<script>location.replace('attenance.php')</script>";
                                 }
                             }

@@ -48,7 +48,9 @@ include("./Assets/links.php"); ?>
                         </tr> -->
                         <tr>
                             <td>Date</td>
-                            <td><input type="date" name="attendancedate" /></td>
+                            <?php
+                            $date = date("Y-m-d") ?>
+                            <td><input type="date" name="attendancedate" value="<?php echo "$date"; ?>" /></td>
                         </tr>
                     </table>
                     <div class="submit-btn">
