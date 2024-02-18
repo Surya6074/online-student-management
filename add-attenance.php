@@ -13,6 +13,8 @@ include("./Assets/links.php"); ?>
 <?php
 $attenyear = $_GET['attendanceyear'];
 $attendate = $_GET['attendancedate'];
+$_SESSION['year'] = $attenyear;
+
 ?>
 
 <body>
@@ -59,8 +61,6 @@ $attendate = $_GET['attendancedate'];
                             <?php
                             include("./config/connect.php");
                             $date = date("Y-m-d");
-                            print_r($_GET);
-
                             $sql = "SELECT `stud_id`, `stud_name` FROM `student_details` where stud_year = '$attenyear'";
                             $result = $conn->query($sql);
                             $nums = mysqli_num_rows($result);
@@ -74,12 +74,12 @@ $attendate = $_GET['attendancedate'];
                             }
 
                             //upload attendance
-                            if (isset($_POST['submit'])) {
+                            if (array_key_exists('submit', $_POST)) {
                                 $at = $_POST['check'];
 
                                 //check for attendance
 
-                                $checkatten = "SELECT *  FROM `attendance_details` WHERE atten_date='$date'";
+                                $checkatten = "SELECT * FROM `attendance_details` WHERE atten_date='$date'";
                                 $attenresult = $conn->query($checkatten);
                                 $checknum = mysqli_num_rows($attenresult);
                                 if ($checknum > 0) {
