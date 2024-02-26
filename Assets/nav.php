@@ -15,8 +15,10 @@
             ?>
         </div>
         <div class="user-logout">
-            <p>Logout</p>
-            <i class="bx bx-log-out"></i>
+            <button onclick="location.replace('login.php')">
+                <p>Logout</p>
+                <i class="bx bx-log-out"></i>
+            </button>
         </div>
     </div>
 </nav>
@@ -57,6 +59,7 @@
         font-size: 36px;
         color: var(--txt);
     }
+
 
 
     .user-nav {
@@ -112,8 +115,22 @@
         align-items: center;
     }
 
+    .user-logout button {
+        outline: none;
+        border: none;
+        height: 100%;
+        width: 100%;
+        background: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+
+
     .user-logout i {
         font-size: 26px;
+        margin-left: 10px;
     }
 
     .user-logout p {

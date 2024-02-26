@@ -1,5 +1,6 @@
 <?php
-include("./config/session.php");
+session_start();
+unset($_POST['u_id']);
 include("./Assets/links.php"); ?>
 
 <!DOCTYPE html>
