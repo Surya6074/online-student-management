@@ -13,8 +13,6 @@ include("./Assets/links.php"); ?>
 <?php
 $attenyear = $_GET['attendanceyear'];
 $attendate = $_GET['attendancedate'];
-$_SESSION['year'] = $attenyear;
-
 ?>
 
 <body>
