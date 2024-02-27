@@ -13,7 +13,7 @@
 
                 echo "<p>" . $_SESSION['u_name'] . "</p>";
                 echo "<p>" . $_SESSION['u_email'] . "</p>";
-                echo "<p>" . $_SESSION['u_id'] . "</p>";
+                echo "<p>" . $_SESSION['s_id'] . "</p>";
 
                 ?>
           </div>

@@ -1,6 +1,6 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['u_id'])) {
+if (!isset($_SESSION['s_id'])) {
     echo "<script>location.replace('../login.php')</script>";
 }

@@ -23,10 +23,25 @@ include("./Assets/links.php"); ?>
             <div class="con">
                 <h1>Add Subject</h1>
                 <div class="notice">
-                    <form action="" method="post">
-                        <input placeholder="Subject Title" type="text" class="notice-input" />
-                        <textarea placeholder="Subject Description" class="notice-input" name="noticemsg" cols="40" rows="6"></textarea>
-                        <button type="submit">submit</button>
+                    <form action="./add-subject.php" method="post">
+                        <table>
+                            <tr>
+                                <td>Subject Name : </td>
+                                <td><input placeholder="Subject Title" type="text" name="subjectname" class="notice-input" required /></td>
+                            </tr>
+                            <tr>
+                                <td>Subject Year : </td>
+                                <td><select name="subjectyear" class="notice-input">
+                                        <option value="1">I</option>
+                                        <option value="2">II</option>
+                                        <option value="3">III</option>
+                                    </select></td>
+                            </tr>
+                        </table>
+                        <div class="submit-btn">
+                            <button type="reset" class="btn btn-re">Reset</button>
+                            <button type="submit" name="submit" class="btn btn-sub">Submit</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -34,6 +49,18 @@ include("./Assets/links.php"); ?>
         </div>
     </div>
 </body>
+
+<?php
+include('./config/connect.php');
+if (array_key_exists('submit', $_POST)) {
+    $subjectname = $_POST['subjectname'];
+    $subjectyear = $_POST['subjectyear'];
+    $sql = "INSERT INTO `subject_details`(`subject_name`, `subject_year`) VALUES ('$subjectname','$subjectyear')";
+    if ($conn->query($sql)) {
+        echo "<script>alert('Subject Added successfully')</script>";
+    }
+}
+?>
 <style>
     .main-content {
         display: flex;
@@ -62,6 +89,8 @@ include("./Assets/links.php"); ?>
     .notice form {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     .notice form .notice-input {
@@ -70,7 +99,13 @@ include("./Assets/links.php"); ?>
         outline: none;
         border: 1px solid var(--txt);
         border-radius: 10px;
+        width: 200px;
     }
+
+    .notice form table {
+        align-items: center;
+    }
+
 
     .notice form textarea {
         resize: none;
@@ -85,6 +120,28 @@ include("./Assets/links.php"); ?>
         color: var(--white);
         border-radius: 10px;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+    .submit-btn {
+        margin: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn {
+        width: 90px;
+        padding: 10px;
+        background-color: var(--blue);
+        outline: none;
+        border: 0;
+        border-radius: 10px;
+        margin: 10px 20px;
+        color: var(--white);
+    }
+
+    .btn-re {
+        background-color: var(--txt);
     }
 </style>
 

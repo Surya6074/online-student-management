@@ -36,29 +36,48 @@ include("./Assets/links.php"); ?>
                 <div class="result">
                     <h1>Marks</h1>
                     <table>
+                        <thead>
+                            <tr>
+                                <td>Subject Name</td>
+                                <td>Internal Mark - I</td>
+                                <td>Internal Mark - II</td>
+                                <td>External Mark</td>
+                            </tr>
+                        </thead>
                         <tr>
                             <td>Tamil</td>
+                            <td><input type="text" /></td>
+                            <td><input type="text" /></td>
                             <td><input type="text" /></td>
                         </tr>
                         <tr>
                             <td>English</td>
                             <td><input type="text" /></td>
+                            <td><input type="text" /></td>
+                            <td><input type="text" /></td>
                         </tr>
                         <tr>
                             <td>Communicative English</td>
+                            <td><input type="text" /></td>
+                            <td><input type="text" /></td>
                             <td><input type="text" /></td>
                         </tr>
                         <tr>
                             <td>Mobile Computing</td>
                             <td><input type="text" /></td>
+                            <td><input type="text" /></td>
+                            <td><input type="text" /></td>
                         </tr>
-
                         <tr>
                             <td>Web programming</td>
+                            <td><input type="text" /></td>
+                            <td><input type="text" /></td>
                             <td><input type="text" /></td>
                         </tr>
                         <tr>
                             <td>Data Mining</td>
+                            <td><input type="text" /></td>
+                            <td><input type="text" /></td>
                             <td><input type="text" /></td>
                         </tr>
                     </table>
@@ -131,6 +150,10 @@ include("./Assets/links.php"); ?>
     .result table {
         text-align: center;
         border-collapse: collapse;
+    }
+
+    .result table thead tr td {
+        color: var(--black);
     }
 
     .result td {

@@ -201,7 +201,7 @@ if (array_key_exists('studlog', $_POST)) {
     $row = mysqli_num_rows($result);
     $stud = mysqli_fetch_assoc($result);
     if ($row > 0 && $row < 2) {
-        $_SESSION['u_id'] = $stud['stud_id'];
+        $_SESSION['s_id'] = $stud['stud_id'];
         $_SESSION['u_name'] = $stud['stud_name'];
         $_SESSION['u_dob'] = $stud['stud_dob'];
         $_SESSION['u_email'] = $stud['stud_email'];

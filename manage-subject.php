@@ -31,99 +31,54 @@ include("./Assets/links.php"); ?>
                         <p>show</p>
                     </div>
                 </div>
-                <table class="msubject" style="overflow-x: scroll">
-                    <thead>
-                        <tr>
-                            <th><input type="checkbox" name="" id="" /></th>
-                            <th>S.No</th>
-                            <th>Subject</th>
-                            <th>subject Description</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th><input type="checkbox" name="" id="" /></th>
-                            <td>1</td>
-                            <td>Tamil</td>
-                            <td>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                                asdfdfasdfasdfasdfad
-                            </td>
-                            <td class="action_btn">
-                                <button class="edt"><i class="bx bxs-edit"></i></button>
-                                <button class="del"><i class="bx bxs-message-x"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th><input type="checkbox" name="" id="" /></th>
-                            <td>1</td>
-                            <td>English</td>
-                            <td>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                                asdfdfasdfasdfasdfad
-                            </td>
-                            <td class="action_btn">
-                                <button class="edt"><i class="bx bxs-edit"></i></button>
-                                <button class="del"><i class="bx bxs-message-x"></i></button>
-                            </td>
-                        </tr>
+                <form action="./manage-subject.php" onSubmit="return confirm('Are you sure to delete?')" method="post">
+                    <table class="msubject" style="overflow-x: scroll">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" name="" id="" /></th>
+                                <th>S.No</th>
+                                <th>Subject</th>
+                                <th>Subject Year</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            include('./config/connect.php');
+                            if (array_key_exists('delrecord', $_POST)) {
+                                $delrecord = "DELETE FROM `subject_details` WHERE subjectid='" . $_POST['delrecord'] . "'";
+                                if ($conn->query($delrecord)) {
+                                    echo "<script>alert('" . $_POST['delrecord'] . " deleted successfully')</script>";
+                                }
+                            }
+                            $sql = "SELECT * FROM `subject_details`";
+                            $result = $conn->query($sql);
+                            $numrows = mysqli_num_rows($result);
+                            if ($numrows > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo "<tr>";
+                                    echo "<td><input type='checkbox' name='' id=''></td>";
+                                    echo "<td>" . $row['subjectid'] . "</td>";
+                                    echo "<td>" . $row['subject_name'] . "</td>";
+                                    if ($row['subject_year'] == 3) {
+                                        $subyear = "III";
+                                    } elseif ($row['subject_year'] == 2) {
+                                        $subyear = "II";
+                                    } else {
+                                        $subyear = "I";
+                                    }
+                                    echo "<td>" . $subyear . "</td>";
+                                    echo "<td class='action_btn'><button  type='submit' name='delrecord' value='" . $row['subjectid'] . "' class='del'><i class='bx bxs-message-x'></i></button></td>";
+                                    echo "</tr>";
+                                }
+                            }
 
-                        <tr>
-                            <th><input type="checkbox" name="" id="" /></th>
-                            <td>1</td>
-                            <td>Mobile computing</td>
-                            <td>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                                asdfdfasdfasdfasdfad
-                            </td>
-                            <td class="action_btn">
-                                <button class="edt"><i class="bx bxs-edit"></i></button>
-                                <button class="del"><i class="bx bxs-message-x"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th><input type="checkbox" name="" id="" /></th>
-                            <td>1</td>
-                            <td>Web programming</td>
-                            <td>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                                asdfdfasdfasdfasdfad
-                            </td>
-                            <td class="action_btn">
-                                <button class="edt"><i class="bx bxs-edit"></i></button>
-                                <button class="del"><i class="bx bxs-message-x"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th><input type="checkbox" name="" id="" /></th>
-                            <td>1</td>
-                            <td>Data mining</td>
-                            <td>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                                asdfdfasdfasdfasdfad
-                            </td>
-                            <td class="action_btn">
-                                <button class="edt"><i class="bx bxs-edit"></i></button>
-                                <button class="del"><i class="bx bxs-message-x"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th><input type="checkbox" name="" id="" /></th>
-                            <td>1</td>
-                            <td>Communicative English</td>
-                            <td>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                                asdfdfasdfasdfasdfad
-                            </td>
-                            <td class="action_btn">
-                                <button class="edt"><i class="bx bxs-edit"></i></button>
-                                <button class="del"><i class="bx bxs-message-x"></i></button>
-                            </td>
-                        </tr>
 
-                    </tbody>
-                </table>
+                            ?>
+
+                        </tbody>
+                    </table>
+                </form>
             </div>
             <!-- end of page -->
         </div>
