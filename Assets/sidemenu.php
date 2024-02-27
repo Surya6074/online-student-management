@@ -13,12 +13,8 @@
         <li class="menu-items link" onclick="location.replace('attenance.php')">
             <a class="links" href="attenance.php">Attenance</a>
         </li>
-        <li class="menu-items link">
-            <a class="links">Results</a>
-            <ul class="sub-menu">
-                <li><a href="result.php">Add Results</a></li>
-                <li><a href="add-result.php">Manage Results</a></li>
-            </ul>
+        <li class="menu-items link" onclick="location.replace('result.php')">
+            <a href="result.php" class="links">Results</a>
         </li>
         <li class="menu-items link">
             <a class="links">Notice</a>

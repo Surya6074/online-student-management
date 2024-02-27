@@ -31,10 +31,13 @@ include("./Assets/links.php"); ?>
                             </tr>
                             <tr>
                                 <td>Subject Year : </td>
-                                <td><select name="subjectyear" class="notice-input">
-                                        <option value="1">I</option>
-                                        <option value="2">II</option>
-                                        <option value="3">III</option>
+                                <td><select name="subjectsem" class="notice-input" id="sem">
+                                        <option value="ISEM">I - SEMESTER</option>
+                                        <option value="IISEM">II - SEMESTER</option>
+                                        <option value="IIISEM">III - SEMESTER</option>
+                                        <option value="IVSEM">IV - SEMESTER</option>
+                                        <option value="VSEM">V - SEMESTER</option>
+                                        <option value="VISEM">VI - SEMESTER</option>
                                     </select></td>
                             </tr>
                         </table>
@@ -54,8 +57,8 @@ include("./Assets/links.php"); ?>
 include('./config/connect.php');
 if (array_key_exists('submit', $_POST)) {
     $subjectname = $_POST['subjectname'];
-    $subjectyear = $_POST['subjectyear'];
-    $sql = "INSERT INTO `subject_details`(`subject_name`, `subject_year`) VALUES ('$subjectname','$subjectyear')";
+    $subjectsem = $_POST['subjectsem'];
+    $sql = "INSERT INTO `subject_details`(`subject_name`, `subject_sem`) VALUES ('$subjectname','$subjectsem')";
     if ($conn->query($sql)) {
         echo "<script>alert('Subject Added successfully')</script>";
     }

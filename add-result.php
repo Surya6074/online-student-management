@@ -21,15 +21,23 @@ include("./Assets/links.php"); ?>
         </div>
         <div class="main-content">
             <!-- content of the page -->
-
+            <?php
+            $rollno = $_POST['rollno'];
+            $year = $_POST['year'];
+            $sem = $_POST['sem'];
+            ?>
             <div class="result-head">
                 <div class="year rth">
-                    <p>Roll no :</p>
-                    <p>212703131</p>
+                    <p>Roll no : </p>
+                    <p><?php echo $rollno; ?></p>
                 </div>
                 <div class="section rth">
-                    <p>Year :</p>
-                    <p>III</p>
+                    <p>SEM : </p>
+                    <p><?php echo $sem; ?></p>
+                </div>
+                <div class="section rth">
+                    <p>Year : </p>
+                    <p><?php echo $year; ?></p>
                 </div>
             </div>
             <form action="add-attenance.php" method="post">
@@ -44,42 +52,28 @@ include("./Assets/links.php"); ?>
                                 <td>External Mark</td>
                             </tr>
                         </thead>
-                        <tr>
+                        <?php
+                        include('./config/connect.php');
+                        $sql = "SELECT * FROM `subject_details` WHERE subject_sem='" . $_POST['sem'] . "'";
+                        $result = $conn->query($sql);
+                        $numrows = mysqli_num_rows($result);
+                        if ($numrows > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo "<tr>";
+                                echo "<td>" . $row['subject_name'] . "</td>";
+                                echo "<td><input type='text' name id='inp' onkeyup='intern(this)' /></td>";
+                                echo "<td><input type='text' name id='inp' onkeyup='intern(this)' /></td>";
+                                echo "<td><input type='text' id='inp' onkeyup='ext(this)' /></td>";
+                                echo "</tr>";
+                            }
+                        }
+                        ?>
+                        <!-- <tr>
                             <td>Tamil</td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                        </tr>
-                        <tr>
-                            <td>English</td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                        </tr>
-                        <tr>
-                            <td>Communicative English</td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                        </tr>
-                        <tr>
-                            <td>Mobile Computing</td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                        </tr>
-                        <tr>
-                            <td>Web programming</td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                        </tr>
-                        <tr>
-                            <td>Data Mining</td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                            <td><input type="text" /></td>
-                        </tr>
+                            <td><input type='text' name id='inp' onkeyup='intern(this)' /></td>
+                            <td><input type="text" id="inp" onkeyup="intern(this)" /></td>
+                            <td><input type='text' id='inp' onkeyup='ext(this)' /></td>
+                        </tr> -->
                     </table>
                     <div class="submit-btn">
                         <button type="reset" class="btn btn-re">Reset</button>
@@ -92,6 +86,17 @@ include("./Assets/links.php"); ?>
         </div>
     </div>
 </body>
+<script>
+    function ext(input) {
+        if (input.value > 75) input.style.borderColor = 'tomato';
+        if (input.value < 75) input.style.borderColor = '#e5e5e5';
+    }
+
+    function intern(input) {
+        if (input.value > 40) input.style.borderColor = 'tomato';
+        if (input.value < 40) input.style.borderColor = '#e5e5e5';
+    }
+</script>
 <style>
     .submit-btn {
         margin: 10px;

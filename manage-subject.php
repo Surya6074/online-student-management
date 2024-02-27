@@ -60,14 +60,7 @@ include("./Assets/links.php"); ?>
                                     echo "<td><input type='checkbox' name='' id=''></td>";
                                     echo "<td>" . $row['subjectid'] . "</td>";
                                     echo "<td>" . $row['subject_name'] . "</td>";
-                                    if ($row['subject_year'] == 3) {
-                                        $subyear = "III";
-                                    } elseif ($row['subject_year'] == 2) {
-                                        $subyear = "II";
-                                    } else {
-                                        $subyear = "I";
-                                    }
-                                    echo "<td>" . $subyear . "</td>";
+                                    echo "<td>" . $row['subject_sem'] . "</td>";
                                     echo "<td class='action_btn'><button  type='submit' name='delrecord' value='" . $row['subjectid'] . "' class='del'><i class='bx bxs-message-x'></i></button></td>";
                                     echo "</tr>";
                                 }

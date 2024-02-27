@@ -23,27 +23,39 @@ include("./Assets/links.php"); ?>
 
             <div class="result-select">
                 <h1>Result</h1>
-                <form action="" method="post">
+                <form action="./add-result.php" method="post">
                     <table>
                         <tr>
                             <td>Roll no</td>
-                            <td><input type="text" placeholder="Roll no"></td>
+                            <td><input type="text" name='rollno' placeholder="Roll no"></td>
                         </tr>
                         <tr>
                             <td>Year</td>
                             <td>
                                 <select name="year" id="atyear">
-                                    <option value="I-year">I-year</option>
-                                    <option value="II-year">II-year</option>
-                                    <option value="III-year">III-year</option>
+                                    <option value="1">I-year</option>
+                                    <option value="2">II-year</option>
+                                    <option value="3">III-year</option>
                                 </select>
                             </td>
                         </tr>
-
+                        <tr>
+                            <td>Semester</td>
+                            <td>
+                                <select name="sem" id="sem">
+                                    <option value="ISEM">I - SEMESTER</option>
+                                    <option value="IISEM">II - SEMESTER</option>
+                                    <option value="IIISEM">III - SEMESTER</option>
+                                    <option value="IVSEM">IV - SEMESTER</option>
+                                    <option value="VSEM">V - SEMESTER</option>
+                                    <option value="VISEM">VI - SEMESTER</option>
+                                </select>
+                            </td>
+                        </tr>
                     </table>
                     <div class="submit-btn">
                         <button type="reset" class="btn btn-re">Reset</button>
-                        <button type="submit" class="btn btn-sub">Submit</button>
+                        <button type="submit" name="submit" class="btn btn-sub">Submit</button>
                     </div>
                 </form>
             </div>
