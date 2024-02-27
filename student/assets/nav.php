@@ -18,8 +18,10 @@
                 ?>
           </div>
           <div class="user-logout">
-              <p>Logout</p>
-              <i class="bx bx-log-out"></i>
+              <button onclick="location.replace('logout.php')">
+                  <p>Logout</p>
+                  <i class="bx bx-log-out"></i>
+              </button>
           </div>
       </div>
   </nav>
@@ -105,18 +107,23 @@
           margin-top: 10px;
       }
 
-      .user-logout {
-          display: flex;
-          justify-content: space-evenly;
+      .user-logout button {
+          outline: none;
+          border: none;
           width: 100%;
-          border-top: 1px solid var(--grey);
-          padding: 20px;
-          cursor: pointer;
+          background: none;
+          display: flex;
+          justify-content: center;
           align-items: center;
+          cursor: pointer;
+          border-top: 1px solid var(--grey);
+          padding-top: 10px;
       }
+
 
       .user-logout i {
           font-size: 26px;
+          margin-left: 10px;
       }
 
       .user-logout p {

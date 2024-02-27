@@ -15,7 +15,7 @@
             ?>
         </div>
         <div class="user-logout">
-            <button onclick="location.replace('login.php')">
+            <button onclick="location.replace('logout.php')">
                 <p>Logout</p>
                 <i class="bx bx-log-out"></i>
             </button>
