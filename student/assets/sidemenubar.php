@@ -13,7 +13,7 @@
             <a href="result.php" class="links">Results</a>
         </li>
     </ul>
-    <div class="btm">
+    <div class="btm" onclick="location.replace('logout.php')">
         <p>Logout</p>
         <p><i class='bx bx-log-out'></i></p>
     </div>
@@ -97,6 +97,7 @@
         display: flex;
         justify-content: space-around;
         border-top: 1px solid #dbdbdb;
+        cursor: pointer;
     }
 
     .btm p {

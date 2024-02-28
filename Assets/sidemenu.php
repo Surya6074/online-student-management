@@ -31,7 +31,7 @@
             </ul>
         </li>
     </ul>
-    <div class="btm" onclick="location.replace('login.php')">
+    <div class="btm" onclick="location.replace('logout.php')">
         <p>Logout</p>
         <p><i class='bx bx-log-out'></i></p>
     </div>
