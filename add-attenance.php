@@ -74,10 +74,11 @@ $attendate = $_GET['attendancedate'];
                             //upload attendance
                             if (array_key_exists('submit', $_POST)) {
                                 $at = $_POST['check'];
-
+                                $atyear = $_POST['submit'];
+                                echo "<script>alert('" . $atyear . "')</script>";
                                 //check for attendance
 
-                                $checkatten = "SELECT * FROM `attendance_details` WHERE atten_date='$date'";
+                                $checkatten = "SELECT * FROM `attendance_details` WHERE atten_date='$date' AND atten_year='$atyear'";
                                 $attenresult = $conn->query($checkatten);
                                 $checknum = mysqli_num_rows($attenresult);
                                 if ($checknum > 0) {
@@ -86,7 +87,7 @@ $attendate = $_GET['attendancedate'];
                                 } else {
 
                                     foreach ($at as $key => $item) {
-                                        $insertsql = "INSERT INTO `attendance_details`(`attendance_id`,`stud_id`, `atten_date`, `atten_status`) VALUES ('','$key','$date','$item')";
+                                        $insertsql = "INSERT INTO `attendance_details`(`stud_id`, `atten_date`, `atten_status`,`atten_year`) VALUES ('$key','$date','$item','$atyear')";
                                         $conn->query($insertsql);
                                     }
                                     echo "<script>alert('Attenance success uploaded')</script>";
@@ -101,7 +102,7 @@ $attendate = $_GET['attendancedate'];
                     </table>
                     <div class="submit-btn">
                         <button type="reset" class="btn btn-re">Reset</button>
-                        <button type="submit" name="submit" value="submit" class="btn btn-sub">Submit</button>
+                        <button type="submit" name="submit" value="<?php echo $attenyear ?>" class="btn btn-sub">Submit</button>
                     </div>
                 </div>
             </form>
