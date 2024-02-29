@@ -30,46 +30,25 @@ include("./Assets/links.php"); ?>
                             <th>Present/Absent</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <p>12/02/2024</p>
-                                </td>
-                                <td>
-                                    <p class="pre">Present</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>11/02/2024</p>
-                                </td>
-                                <td>
-                                    <p class="pre">Present</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>10/02/2024</p>
-                                </td>
-                                <td>
-                                    <p class="pre">Present</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>09/02/2024</p>
-                                </td>
-                                <td>
-                                    <p class="abs">Absent</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>08/02/2024</p>
-                                </td>
-                                <td>
-                                    <p class="abs">Absent</p>
-                                </td>
-                            </tr>
+                            <?php
+                            include('./config/connect.php');
+                            $studid = $_SESSION['s_id'];
+                            $sql = "SELECT * FROM `attendance_details` WHERE stud_id='$studid'";
+                            $result = $conn->query($sql);
+                            $numrows = mysqli_num_rows($result);
+                            if ($numrows > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo "<tr>";
+                                    echo "<td><p>" . $row['atten_date'] . "</p></td>";
+                                    if ($row['atten_status'] == 0) {
+                                        echo "<td><p class='abs'>Absent</p></td>";
+                                    } else {
+                                        echo "<td><p class='pre'>Present</p></td>";
+                                    }
+                                    echo "</tr>";
+                                }
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
