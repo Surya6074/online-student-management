@@ -37,11 +37,12 @@ include("./Assets/links.php"); ?>
 </body>
 <?php
 date_default_timezone_set('Asia/Kolkata');
+include('./config/connect.php');
 if (array_key_exists('notice', $_POST)) {
-    $ntitle = $_POST['noticetitle'];
-    $nmsg = $_POST['noticemsg'];
-    echo "<script>alert('" . $ntitle . " " . $nmsg . " " . date("H:i:sa") . "')</script>";
-    print_r($_POST);
+    $sql = "INSERT INTO `notice_details`(`notice_title`, `notice_descripttion`) VALUES ('" . $_POST['noticetitle'] . "','" . $_POST['noticemsg'] . "')";
+    if ($conn->query($sql)) {
+        echo "<script>alert('notice updated sucessfully')</script>";
+    }
 }
 
 ?>

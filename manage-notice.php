@@ -31,19 +31,45 @@ include("./Assets/links.php"); ?>
                         <p>show</p>
                     </div>
                 </div>
-                <table class="mnotice" style="overflow-x: scroll">
-                    <thead>
-                        <tr>
-                            <th><input type="checkbox" name="" id="" /></th>
-                            <th>S.No</th>
-                            <th>Title</th>
-                            <th>Date</th>
-                            <th>Notice</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
+                <form action="./manage-notice.php" method="post" onSubmit="return confirm('Are you sure to delete?')">
+                    <table class="mnotice" style="overflow-x: scroll">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" name="" id="" /></th>
+                                <th>S.No</th>
+                                <th>Title</th>
+                                <th>Date</th>
+                                <th>Notice</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <?php
+                            include('./config/connect.php');
+                            if (array_key_exists('delrecord', $_POST)) {
+                                $delrecord = "DELETE FROM `notice_details` WHERE notice_id='" . $_POST['delrecord'] . "'";
+                                if ($conn->query($delrecord)) {
+                                    echo "<script>alert('" . $_POST['delrecord'] . " deleted successfully')</script>";
+                                }
+                            }
+                            $sql = "SELECT `notice_id`, `notice_date`, `notice_title`, `notice_descripttion` FROM `notice_details` ";
+                            $result = $conn->query($sql);
+                            $numrows = mysqli_num_rows($result);
+                            if ($numrows > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo "<tr>";
+                                    echo "<td><input type='checkbox' name='' id=''></td>";
+                                    echo "<td>" . $row['notice_id'] . "</td>";
+                                    echo "<td>" . $row['notice_title'] . "</td>";
+                                    echo "<td>" . $row['notice_date'] . "</td>";
+                                    echo "<td>" . $row['notice_descripttion'] . "</td>";
+                                    echo "<td class='action_btn'><button  type='submit' name='delrecord' value='" . $row['notice_id'] . "' class='del' ><i class='bx bxs-message-x'></i></button></td>";
+                                    echo "</tr>";
+                                }
+                            }
+                            ?>
+                            <!-- <tr>
                             <th><input type="checkbox" name="" id="" /></th>
                             <td>1</td>
                             <td>Exam</td>
@@ -56,51 +82,10 @@ include("./Assets/links.php"); ?>
                                 <button class="edt"><i class="bx bxs-edit"></i></button>
                                 <button class="del"><i class="bx bxs-message-x"></i></button>
                             </td>
-                        </tr>
-                        <tr>
-                            <th><input type="checkbox" name="" id="" /></th>
-                            <td>2</td>
-                            <td>Exam</td>
-                            <td>09/02/2024</td>
-                            <td>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                                asdfdfasdfasdfasdfad
-                            </td>
-                            <td class="action_btn">
-                                <button class="edt"><i class="bx bxs-edit"></i></button>
-                                <button class="del"><i class="bx bxs-message-x"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th><input type="checkbox" name="" id="" /></th>
-                            <td>3</td>
-                            <td>Exam</td>
-                            <td>09/02/2024</td>
-                            <td>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                                asdfdfasdfasdfasdfad
-                            </td>
-                            <td class="action_btn">
-                                <button class="edt"><i class="bx bxs-edit"></i></button>
-                                <button class="del"><i class="bx bxs-message-x"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th><input type="checkbox" name="" id="" /></th>
-                            <td>4</td>
-                            <td>Exam</td>
-                            <td>09/02/2024</td>
-                            <td>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit
-                                asdfdfasdfasdfasdfad
-                            </td>
-                            <td class="action_btn">
-                                <button class="edt"><i class="bx bxs-edit"></i></button>
-                                <button class="del"><i class="bx bxs-message-x"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                        </tr> -->
+                        </tbody>
+                    </table>
+                </form>
             </div>
 
             <!-- end of page -->

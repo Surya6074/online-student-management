@@ -27,40 +27,20 @@ include("./Assets/links.php"); ?>
                     <p>Notice</p>
                     <span>Recent <i class='bx bx-menu-alt-left'></i></span>
                 </div>
-                <div class="dnnotice">
-                    <div class="dncontent">
-                        <p>Exam Start Before April 21st. Study well. All best</p>
-                    </div>
-                    <div class="dnfoot">
-                        <p>last updated (02/02/2024 12:59 AM)</p>
-                    </div>
-                </div>
-                <div class="dnnotice">
-                    <div class="dncontent">
-                        <p>Tomorrow Genpact ONcampus drive on Av hall</p>
-                    </div>
-                    <div class="dnfoot">
-                        <p>last updated (01/02/2024 02:15 AM)</p>
-                    </div>
-                </div>
-                <div class="dnnotice">
-                    <div class="dncontent">
-                        <p>Mobile computing assignment submit before 05/02/2024</p>
-                    </div>
-                    <div class="dnfoot">
-                        <p>last updated (28/01/2024 12:59 AM)</p>
-                    </div>
-                </div>
-                <div class="dnnotice">
-                    <div class="dncontent">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga nesciunt exercitationem hic reiciendis magni obcaecati laborum ratione eligendi quasi libero, quia beatae tempora nemo facilis odit repellat id doloribus ullam.</p>
-                    </div>
-                    <div class="dnfoot">
-                        <p>last updated (28/01/2024 12:59 AM)</p>
-                    </div>
-                </div>
-
-
+                <?php
+                include('./config/connect.php');
+                $sql = "Select * From `notice_details` Order By `notice_id` Desc  ";
+                $result = $conn->query($sql);
+                $numrows = mysqli_num_rows($result);
+                if ($numrows > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "<div class='dnnotice'>";
+                        echo "<div class='dncontent'><p>" . $row['notice_descripttion'] . "</p></div>";
+                        echo "<div class='dnfoot'><p>last updated (" . $row['notice_date'] . ")</p></div>";
+                        echo "</div>";
+                    }
+                }
+                ?>
             </div>
 
             <!-- end of page -->
