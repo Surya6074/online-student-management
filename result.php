@@ -26,10 +26,6 @@ include("./Assets/links.php"); ?>
                 <form action="./add-result.php" method="post">
                     <table>
                         <tr>
-                            <td>Roll no</td>
-                            <td><input type="text" name='rollno' placeholder="Roll no"></td>
-                        </tr>
-                        <tr>
                             <td>Year</td>
                             <td>
                                 <select name="year" id="atyear">
@@ -49,6 +45,24 @@ include("./Assets/links.php"); ?>
                                     <option value="IVSEM">IV - SEMESTER</option>
                                     <option value="VSEM">V - SEMESTER</option>
                                     <option value="VISEM">VI - SEMESTER</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Subject</td>
+                            <td>
+                                <select name="subject" id="subject">
+                                    <?php
+                                    include('./config/connect.php');
+                                    $sql = "SELECT * FROM `subject_details`";
+                                    $result = $conn->query($sql);
+                                    $numrows = mysqli_num_rows($result);
+                                    if ($numrows > 0) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            echo "<option value='" . $row['subject_name'] . "'>" . $row['subject_name'] . "</option>";
+                                        }
+                                    }
+                                    ?>
                                 </select>
                             </td>
                         </tr>

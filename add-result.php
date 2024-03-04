@@ -10,6 +10,25 @@ include("./Assets/links.php"); ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<?php
+include('./config/connect.php');
+
+$subject = $_POST['subject'];
+$year = $_POST['year'];
+$sem = $_POST['sem'];
+$_SESSION['subject'] = $subject;
+$_SESSION['year'] = $year;
+$_SESSION['sem'] = $sem;
+
+
+$sql1 = "SELECT `result_sem`, `subject_name` FROM `result_details` WHERE result_sem='" . $_SESSION['sem'] . "' AND subject_name='" . $_SESSION['subject'] . "'";
+$result1 = $conn->query($sql1);
+$numrows1 = mysqli_num_rows($result1);
+if ($numrows1 > 0) {
+    header('location: result.php');
+}
+
+?>
 
 <body>
     <nav>
@@ -21,18 +40,13 @@ include("./Assets/links.php"); ?>
         </div>
         <div class="main-content">
             <!-- content of the page -->
-            <?php
-            $rollno = $_POST['rollno'];
-            $year = $_POST['year'];
-            $sem = $_POST['sem'];
-            ?>
             <div class="result-head">
                 <div class="year rth">
-                    <p>Roll no : </p>
-                    <p><?php echo $rollno; ?></p>
+                    <p>Subject Name : </p>
+                    <p><?php echo $subject; ?></p>
                 </div>
                 <div class="section rth">
-                    <p>SEM : </p>
+                    <p>SEMESTER : </p>
                     <p><?php echo $sem; ?></p>
                 </div>
                 <div class="section rth">
@@ -40,7 +54,7 @@ include("./Assets/links.php"); ?>
                     <p><?php echo $year; ?></p>
                 </div>
             </div>
-            <form action="add-attenance.php" method="post">
+            <form action="result-insert.php" method="post" onSubmit="return confirm('Are you sure to update marks?')">
                 <div class="result">
                     <h1>Marks</h1>
                     <table>
@@ -53,20 +67,25 @@ include("./Assets/links.php"); ?>
                             </tr>
                         </thead>
                         <?php
-                        include('./config/connect.php');
-                        $sql = "SELECT * FROM `subject_details` WHERE subject_sem='" . $_POST['sem'] . "'";
+                        $sql = "SELECT * FROM `student_details` WHERE stud_year=$year";
                         $result = $conn->query($sql);
                         $numrows = mysqli_num_rows($result);
                         if ($numrows > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo "<tr>";
-                                echo "<td>" . $row['subject_name'] . "</td>";
-                                echo "<td><input type='text' name id='inp' onkeyup='intern(this)' /></td>";
-                                echo "<td><input type='text' name id='inp' onkeyup='intern(this)' /></td>";
-                                echo "<td><input type='text' id='inp' onkeyup='ext(this)' /></td>";
+                                echo "<td>" . $row['stud_name'] . "</td>";
+                                echo "<td><input type='text' name='" . $row['stud_id'] . "[]' id='inp' onkeyup='intern(this)' /></td>";
+                                echo "<td><input type='text' name='" . $row['stud_id'] . "[]' id='inp' onkeyup='intern(this)' /></td>";
+                                echo "<td><input type='text' name='" . $row['stud_id'] . "[]' id='inp' onkeyup='ext(this)' /></td>";
                                 echo "</tr>";
                             }
+                            $_POST['subject'] = $subject;
                         }
+
+
+
+
+
                         ?>
                         <!-- <tr>
                             <td>Tamil</td>
@@ -77,7 +96,7 @@ include("./Assets/links.php"); ?>
                     </table>
                     <div class="submit-btn">
                         <button type="reset" class="btn btn-re">Reset</button>
-                        <button type="submit" class="btn btn-sub">Submit</button>
+                        <button type="submit" name="update-mark" value='"<?php echo $_POST['year'] ?>"' class="btn btn-sub">Submit</button>
                     </div>
                 </div>
             </form>
