@@ -33,7 +33,7 @@ include("./Assets/links.php"); ?>
                             <?php
                             include('./config/connect.php');
                             $studid = $_SESSION['s_id'];
-                            $sql = "SELECT * FROM `attendance_details` WHERE stud_id='$studid'";
+                            $sql = "SELECT * FROM `attendance_details` WHERE stud_id='$studid' ORDER BY attendance_id DESC";
                             $result = $conn->query($sql);
                             $numrows = mysqli_num_rows($result);
                             if ($numrows > 0) {
