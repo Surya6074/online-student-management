@@ -75,7 +75,6 @@ $attendate = $_GET['attendancedate'];
                             if (array_key_exists('submit', $_POST)) {
                                 $at = $_POST['check'];
                                 $atyear = $_POST['submit'];
-                                echo "<script>alert('" . $atyear . "')</script>";
                                 //check for attendance
 
                                 $checkatten = "SELECT * FROM `attendance_details` WHERE atten_date='$date' AND atten_year='$atyear'";
