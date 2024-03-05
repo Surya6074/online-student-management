@@ -40,7 +40,7 @@ include("./Assets/links.php"); ?>
                     </div>
                     <?php
                     if (array_key_exists('search', $_POST)) {
-                        echo "<script>alert('submoitedd')</script>";
+
                     ?>
                         <table>
                             <thead>
@@ -67,7 +67,7 @@ include("./Assets/links.php"); ?>
                                         if ($row['result_ext'] > 27) {
                                             echo  "<td class='pass'>P</td>";
                                         } else {
-                                            echo  "<td class='re'>R</td>";
+                                            echo  "<td class='re'>RA</td>";
                                         }
                                         echo "</tr>";
                                         $i++;
@@ -97,7 +97,7 @@ include("./Assets/links.php"); ?>
     .result {
         background-color: var(--white);
         margin: 10px;
-        padding: 20px 10px 10px 10px;
+        padding: 30px 10px;
         border-radius: 10px;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         display: flex;
