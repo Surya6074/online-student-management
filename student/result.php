@@ -53,6 +53,7 @@ include("./Assets/links.php"); ?>
                             <tbody>
                                 <?php
                                 include('./config/connect.php');
+                                echo "<script>document.getElementById('sem').value = '" . $_POST['sem'] . "';</script>";
                                 $sql = "SELECT * FROM `result_details` WHERE result_sem='" . $_POST['sem'] . "' AND stud_id='" . $_SESSION['s_id'] . "'";
                                 $result = $conn->query($sql);
                                 $numrows = mysqli_num_rows($result);
