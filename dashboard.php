@@ -22,26 +22,36 @@ include("./config/session.php");
         </div>
         <div class="main-content">
             <!-- content of the page -->
-
+            <?php
+            include('./config/connect.php');
+            $studsql = "SELECT * FROM `student_details`";
+            $noticesql = "SELECT * FROM `notice_details`";
+            $subjectsql = "SELECT * FROM `subject_details`";
+            if ($conn->query($studsql) && $conn->query($noticesql) && $conn->query($subjectsql)) {
+                $studnumrows = mysqli_num_rows($conn->query($studsql));
+                $noticenumrows = mysqli_num_rows($conn->query($noticesql));
+                $subjectnumrows = mysqli_num_rows($conn->query($subjectsql));
+            }
+            ?>
             <div class="dashboard-cards">
                 <div class="dcard">
                     <div class="dtitle">
                         <p>Total Students</p>
-                        <span>186</span>
+                        <span><?php echo $studnumrows; ?></span>
                     </div>
                     <div class="dimg"><i class="bx bxs-user"></i></div>
                 </div>
                 <div class="dcard">
                     <div class="dtitle">
-                        <p>Total classes</p>
-                        <span>6</span>
+                        <p>Total Subjects</p>
+                        <span><?php echo $subjectnumrows; ?></span>
                     </div>
                     <div class="dimg"><i class="bx bxs-rocket"></i></div>
                 </div>
                 <div class="dcard">
                     <div class="dtitle">
                         <p>Total Notice</p>
-                        <span>10</span>
+                        <span><?php echo $noticenumrows; ?></span>
                     </div>
                     <div class="dimg"><i class="bx bx-notepad"></i></div>
                 </div>
@@ -60,7 +70,6 @@ include("./config/session.php");
                     </div>
                 </div>
                 <?php
-                include('./config/connect.php');
                 $sql = "Select * From `notice_details` Order By `notice_id` Desc  ";
                 $result = $conn->query($sql);
                 $numrows = mysqli_num_rows($result);
