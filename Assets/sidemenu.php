@@ -10,11 +10,16 @@
                 <li><a href="manage-student.php">Manage Students</a></li>
             </ul>
         </li>
-        <li class="menu-items link" onclick="location.replace('attenance.php')">
-            <a class="links" href="attenance.php">Attenance</a>
+
+        <li class="menu-items link">
+            <a class="links">Attendance</a>
+            <ul class=" sub-menu">
+                <li><a href="attenance.php">Add Attendance</a></li>
+                <li><a href="atten-report.php">Attendance Report</a></li>
+            </ul>
         </li>
         <li class="menu-items link" onclick="location.replace('result.php')">
-            <a href="result.php" class="links">Results</a>
+            <a href="result.php" class="links">Marks</a>
         </li>
         <li class="menu-items link">
             <a class="links">Notice</a>

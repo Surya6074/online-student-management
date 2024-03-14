@@ -7,7 +7,7 @@ include("./Assets/links.php"); ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Attendance | student</title>
 </head>
 
 <body>
@@ -23,7 +23,7 @@ include("./Assets/links.php"); ?>
 
             <form action="add-attenance.php" method="post">
                 <div class="attenance">
-                    <h1>Attenance</h1>
+                    <h1>Attendance</h1>
                     <table>
                         <thead>
                             <th>Date</th>

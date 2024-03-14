@@ -7,7 +7,7 @@ include("./Assets/links.php"); ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Manage student | Admin</title>
 </head>
 
 <body>
@@ -35,7 +35,7 @@ include("./Assets/links.php"); ?>
                     <table class=" mstud" style="overflow-x: scroll">
                         <thead>
                             <tr>
-                                <th><input type="checkbox" name="" id="" /></th>
+                                <!-- <th><input type="checkbox" name="" id="" /></th> -->
                                 <th>Reg no</th>
                                 <th>Name</th>
                                 <th>Gender</th>
@@ -69,7 +69,7 @@ include("./Assets/links.php"); ?>
                             if ($numrows > 0) {
                                 while ($row = mysqli_fetch_assoc($result)) {
                                     echo "<tr>";
-                                    echo "<td><input type='checkbox' name='' id=''></td>";
+                                    // echo "<td><input type='checkbox' name='' id=''></td>";
                                     echo "<td>" . $row['stud_id'] . "</td>";
                                     echo "<td>" . $row['stud_name'] . "</td>";
                                     echo "<td>" . $row['stud_gender'] . "</td>";

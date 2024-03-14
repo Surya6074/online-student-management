@@ -7,7 +7,7 @@ include("./Assets/links.php"); ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Marks | Admin</title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@ include("./Assets/links.php"); ?>
             <!-- content of the page -->
 
             <div class="result-select">
-                <h1>Result</h1>
+                <h1>Marks</h1>
                 <form action="./add-result.php" method="post">
                     <table>
                         <tr>

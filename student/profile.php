@@ -7,33 +7,10 @@ include("./Assets/links.php"); ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Profile | student</title>
 </head>
 <?php
 include('./config/connect.php');
-
-
-if (array_key_exists('updatestudent', $_POST)) {
-    $sname = $_POST['studname'];
-    $semail = $_POST['studemail'];
-    $sdob = $_POST['studdob'];
-    $sphno = $_POST['studphno'];
-    $sgender = $_POST['studgender'];
-    $sstreet = $_POST['studstreet'];
-    $scity = $_POST['studcity'];
-    $sdis = $_POST['studdistrict'];
-    $spin = $_POST['studpincode'];
-    $sdept = $_POST['studdept'];
-    $syear = $_POST['studyear'];
-    $sql1 = "UPDATE `student_details` SET `stud_name`='$sname',`stud_dob`='$sdob',`stud_phno`='$sphno',`stud_email`='$semail',`stud_street`='$sstreet',`stud_city`='$scity',`stud_district`='$sdis',`stud_pincode`='$spin',`stud_year`='$syear',`stud_dept`='$sdept',`stud_gender`='$sgender' WHERE `stud_id`='" . $_SESSION['s_id'] . "'";
-    if ($conn->query($sql1)) {
-        echo "<script>alert('Data updated successfully')</script>";
-    }
-}
-
-
-
-
 
 $sql = "SELECT * FROM `student_details` WHERE stud_id=" . $_SESSION['s_id'] . "";
 $result = $conn->query($sql);
@@ -162,9 +139,6 @@ if ($row = mysqli_fetch_assoc($result)) {
                     }
                         ?>
 
-                        </div>
-                        <div class="submit-btn">
-                            <button type="submit" name="updatestudent" class="btn btn-sub">Submit</button>
                         </div>
                     </form>
                 </div>

@@ -8,7 +8,7 @@ include("./config/session.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard | Admin</title>
 </head>
 <?php include('./Assets/links.php') ?>
 
