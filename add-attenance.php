@@ -13,6 +13,7 @@ include("./Assets/links.php"); ?>
 <?php
 $attenyear = $_GET['attendanceyear'];
 $attendate = $_GET['attendancedate'];
+$testatten = $attenyear . $attendate;
 ?>
 
 <body>
@@ -70,14 +71,16 @@ $attendate = $_GET['attendancedate'];
                                     echo "</tr>";
                                 }
                             }
-
                             //upload attendance
                             if (array_key_exists('submit', $_POST)) {
                                 $at = $_POST['check'];
-                                $atyear = $_POST['submit'];
+                                $attrs = $_POST['submit'];
+                                $attdate = substr($attrs, 1);
+                                $attyear = $attrs[0];
+
                                 //check for attendance
 
-                                $checkatten = "SELECT * FROM `attendance_details` WHERE atten_date='$date' AND atten_year='$atyear'";
+                                $checkatten = "SELECT * FROM `attendance_details` WHERE atten_date='$attdate' AND atten_year='$attyear'";
                                 $attenresult = $conn->query($checkatten);
                                 $checknum = mysqli_num_rows($attenresult);
                                 if ($checknum > 0) {
@@ -86,7 +89,7 @@ $attendate = $_GET['attendancedate'];
                                 } else {
 
                                     foreach ($at as $key => $item) {
-                                        $insertsql = "INSERT INTO `attendance_details`(`stud_id`, `atten_date`, `atten_status`,`atten_year`) VALUES ('$key','$date','$item','$atyear')";
+                                        $insertsql = "INSERT INTO `attendance_details`(`stud_id`, `atten_date`, `atten_status`,`atten_year`) VALUES ('$key','$attdate','$item','$attyear')";
                                         $conn->query($insertsql);
                                     }
                                     echo "<script>alert('Attenance success uploaded')</script>";
@@ -101,7 +104,7 @@ $attendate = $_GET['attendancedate'];
                     </table>
                     <div class="submit-btn">
                         <button type="reset" class="btn btn-re">Reset</button>
-                        <button type="submit" name="submit" value="<?php echo $attenyear ?>" class="btn btn-sub">Submit</button>
+                        <button type="submit" name="submit" value="<?php echo $testatten ?>" class="btn btn-sub">Submit</button>
                     </div>
                 </div>
             </form>
