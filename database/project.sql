@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2024 at 03:12 PM
+-- Generation Time: Apr 14, 2024 at 03:36 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -60,19 +60,6 @@ CREATE TABLE `attendance_details` (
 -- Dumping data for table `attendance_details`
 --
 
-INSERT INTO `attendance_details` (`attendance_id`, `stud_id`, `atten_date`, `atten_status`, `atten_year`) VALUES
-(1, 20240101, '2024-02-01', '1', 3),
-(40, 20240101, '2024-02-02', '1', 3),
-(42, 20240101, '2024-02-03', '1', 3),
-(43, 20240101, '2024-02-04', '0', 3),
-(44, 20240101, '2024-02-05', '1', 3),
-(45, 20240101, '2024-02-06', '0', 3),
-(46, 20240101, '2024-02-07', '1', 3),
-(47, 20240101, '2024-02-08', '0', 3),
-(49, 20240113, '2024-03-03', '1', 2),
-(50, 20240101, '2024-03-04', '1', 3),
-(51, 212703128, '2024-03-04', '1', 3);
-
 -- --------------------------------------------------------
 
 --
@@ -102,10 +89,6 @@ CREATE TABLE `notice_details` (
 -- Dumping data for table `notice_details`
 --
 
-INSERT INTO `notice_details` (`notice_id`, `notice_date`, `notice_title`, `notice_descripttion`) VALUES
-(1, '2024-02-14 17:04:17', 'wishes', 'first notice in database'),
-(5, '2024-03-04 21:36:19', 'sports day', 'Sports DAy coming saturday! enjoy');
-
 -- --------------------------------------------------------
 
 --
@@ -125,13 +108,6 @@ CREATE TABLE `result_details` (
 --
 -- Dumping data for table `result_details`
 --
-
-INSERT INTO `result_details` (`result_id`, `stud_id`, `result_sem`, `result_int1`, `result_int2`, `result_ext`, `subject_name`) VALUES
-(1, 20240101, 'VISEM', 34, 32, 65, 'web programming'),
-(2, 20240101, 'VISEM', 34, 34, 75, 'data mining'),
-(3, 20240101, 'VSEM', 22, 34, 22, 'Tamil-I'),
-(109, 20240101, 'VISEM', 28, 28, 74, 'PHP and MYSQL'),
-(110, 212703128, 'VISEM', 19, 24, 67, 'PHP and MYSQL');
 
 -- --------------------------------------------------------
 
@@ -162,11 +138,6 @@ CREATE TABLE `student_details` (
 -- Dumping data for table `student_details`
 --
 
-INSERT INTO `student_details` (`stud_id`, `stud_name`, `stud_dob`, `stud_phno`, `stud_email`, `stud_street`, `stud_city`, `stud_district`, `stud_pincode`, `stud_fathername`, `stud_fatherno`, `stud_mothername`, `stud_motherno`, `stud_year`, `stud_dept`, `stud_gender`) VALUES
-(20240101, 'suryakumar', '2004-07-06', '8754044756', 'sksurya6074@gmail.com', 'kaliamman kovil street,matharai', 'usilampatti', 'madurai', '625532', 'kanimurugan', '8883844756', 'sumathi', '9750334566', '3', 'BCA', 'male'),
-(20240113, 'Suryakumar', '2005-01-18', '8754044756', 'test@gmail.com', 'Kaliamman kovil street, matharai,usilampatti', 'Madurai', 'mdu', '625532', 'test1', '08754044756', 'test2', '+918754044756', '2', 'BCA', 'male'),
-(212703128, 'santhosh', '2003-01-11', '7358816871', 'santhosh@gmail.com', 'test', 'madurai', 'madurai', '625019', 'Ramar', '8888888888', 'mangayarasi', '88888888888', '3', 'BCA', 'male');
-
 -- --------------------------------------------------------
 
 --
@@ -183,10 +154,6 @@ CREATE TABLE `subject_details` (
 -- Dumping data for table `subject_details`
 --
 
-INSERT INTO `subject_details` (`subjectid`, `subject_name`, `subject_sem`) VALUES
-(5, 'web programming', 'VISEM'),
-(6, 'data mining', 'VISEM'),
-(9, 'PHP and MYSQL', 'VISEM');
 
 --
 -- Indexes for dumped tables
@@ -239,7 +206,7 @@ ALTER TABLE `subject_details`
 -- AUTO_INCREMENT for table `attendance_details`
 --
 ALTER TABLE `attendance_details`
-  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `attendance_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `notice_details`
@@ -263,7 +230,7 @@ ALTER TABLE `student_details`
 -- AUTO_INCREMENT for table `subject_details`
 --
 ALTER TABLE `subject_details`
-  MODIFY `subjectid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `subjectid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
